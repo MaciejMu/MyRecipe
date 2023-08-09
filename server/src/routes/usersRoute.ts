@@ -5,7 +5,7 @@ import { UserModel } from "../models/Users";
 
 const router = express.Router();
 
-router.route("/register").post(async (req, res) => {
+router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username });
 
@@ -39,4 +39,5 @@ router.post("/login", async (req, res) => {
   const token = jwt.sign({ id: user._id }, "secret");
   res.json({ token, userId: user._id });
 });
+
 export { router as userRouter };
