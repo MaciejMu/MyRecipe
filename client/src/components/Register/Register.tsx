@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -9,12 +8,9 @@ const Register = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setCookies] = useCookies(["access_token"]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const navigate = useNavigate();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try {
       await axios.post("http://localhost:3001/auth/register", {
         username,
