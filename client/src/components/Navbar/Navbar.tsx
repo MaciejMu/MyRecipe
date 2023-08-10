@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import style from "./Navbar.module.scss";
 import { useCookies } from "react-cookie";
 
 const Navbar = () => {
@@ -12,14 +11,17 @@ const Navbar = () => {
     navigate("/auth");
   };
   return (
-    <div className={style.dupa}>
+    <div className="navbar">
       <Link to={"/"}>Home</Link>
-      <Link to={"/create-recipe"}>Create Recipe</Link>
-      <Link to={"/saved-recipies"}>Save Recipe</Link>
+
       {!cookies.access_token ? (
         <Link to={"/auth"}>Login/Register</Link>
       ) : (
-        <button onClick={logout}>Logout</button>
+        <>
+          <Link to={"/create-recipe"}>Create Recipe</Link>
+          <Link to={"/saved-recipes"}>Save Recipe</Link>
+          <button onClick={logout}>Logout</button>
+        </>
       )}
     </div>
   );
