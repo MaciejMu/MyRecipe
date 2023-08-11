@@ -31,6 +31,10 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 20px;
   width: 400px;
+
+  a {
+    color: black;
+  }
 }
 
 .form-group {
@@ -48,6 +52,10 @@ input {
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
+}
+
+textarea {
+  height: 100px;
 }
 
 .navbar {
@@ -80,11 +88,13 @@ a {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 20px;
   width: 400px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 }
-.create-recipe form {
-  display: flex;
-  flex-direction: column;
-}
+
 ul {
   list-style: none;
   padding: 0;

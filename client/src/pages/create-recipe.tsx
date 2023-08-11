@@ -7,6 +7,7 @@ const CreateRecipe = () => {
   const userID = getUserId();
   const [recipe, setRecipe] = useState({
     name: "",
+    description: "",
     ingredients: [""],
     instructions: [""],
     imageUrl: "",
@@ -20,6 +21,10 @@ const CreateRecipe = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
   };
 
+  const handleAddInstruction = () => {
+    setRecipe({ ...recipe, instructions: [...recipe.instructions, ""] });
+  };
+
   const handleIngredientChange = (
     e: ChangeEvent<HTMLInputElement>,
     index: number
@@ -28,6 +33,16 @@ const CreateRecipe = () => {
     const ingredients = recipe.ingredients;
     ingredients[index] = value;
     setRecipe({ ...recipe, ingredients });
+  };
+
+  const handleInstructionChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const { value } = e.target;
+    const instructions = recipe.instructions;
+    instructions[index] = value;
+    setRecipe({ ...recipe, instructions });
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -61,12 +76,12 @@ const CreateRecipe = () => {
           onChange={handleChange}
         />
         <label htmlFor="description">Description</label>
-        {/* <textarea
+        <textarea
           id="description"
           name="description"
           value={recipe.description}
           onChange={handleChange}
-        ></textarea> */}
+        ></textarea>
         <label htmlFor="ingredients">Ingredients</label>
         {recipe.ingredients.map((ingredient, index) => (
           <input
@@ -81,12 +96,18 @@ const CreateRecipe = () => {
           Add Ingredient
         </button>
         <label htmlFor="instructions">Instructions</label>
-        <textarea
-          id="instructions"
-          name="instructions"
-          value={recipe.instructions}
-          onChange={handleChange}
-        ></textarea>
+        {recipe.instructions.map((instruction, index) => (
+          <input
+            key={index}
+            type="text"
+            name="instructions"
+            value={instruction}
+            onChange={(event) => handleInstructionChange(event, index)}
+          />
+        ))}
+        <button type="button" onClick={handleAddInstruction}>
+          Add Instruction
+        </button>
         <label htmlFor="imageUrl">Image URL</label>
         <input
           type="text"

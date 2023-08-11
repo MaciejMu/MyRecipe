@@ -6,6 +6,7 @@ import { useCookies } from "react-cookie";
 type Recipe = {
   _id: string;
   name: string;
+  description: string;
   ingredients: string[];
   instructions: string[];
   imageUrl: string;
@@ -19,6 +20,7 @@ const Home = () => {
   const [cookies, _] = useCookies();
 
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [savedRecipes, setSavedRepices] = useState<string[]>([]);
 
   useEffect(() => {
@@ -46,7 +48,7 @@ const Home = () => {
     if (cookies.access_token) fetchSavedRecipe();
   }, []);
 
-  const isRecipeSaved = (id: string) => savedRecipes.includes(id);
+  const isRecipeSaved = (id: string) => savedRecipes?.includes(id);
 
   const saveRecipe = async (recipeID: string) => {
     try {
@@ -65,7 +67,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="App">
       <h1>Recipes</h1>
       <ul>
         {recipes.map((recipe) => (
@@ -80,6 +82,9 @@ const Home = () => {
                   {isRecipeSaved(recipe._id) ? "Saved" : "Save"}
                 </button>
               ) : null}
+            </div>
+            <div>
+              <p>{recipe.description}</p>
             </div>
             <div className="instructions">
               <p>{recipe.instructions}</p>

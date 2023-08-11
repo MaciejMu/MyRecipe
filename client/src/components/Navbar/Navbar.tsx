@@ -8,18 +8,17 @@ const Navbar = () => {
   const logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
-    navigate("/auth");
+    navigate("/login");
   };
   return (
     <div className="navbar">
       <Link to={"/"}>Home</Link>
-
       {!cookies.access_token ? (
-        <Link to={"/auth"}>Login/Register</Link>
+        <Link to={"/login"}>Login</Link>
       ) : (
         <>
           <Link to={"/create-recipe"}>Create Recipe</Link>
-          <Link to={"/saved-recipes"}>Save Recipe</Link>
+          <Link to={"/saved-recipes"}>Saved Recipe</Link>
           <button onClick={logout}>Logout</button>
         </>
       )}
