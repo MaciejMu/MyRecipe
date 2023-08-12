@@ -2,12 +2,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
 import CreateRecipe from "./pages/Create-recipe";
-// import { Auth } from "./pages/Auth/auth";
 import PrivateRoutes from "./utilis/PrivateRoutes";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SavedRecipes from "./pages/Saved-recipes";
-import RegisterForm from "./components/RegisterFrom/RegisterForm";
+import Register from "./Register";
 
 const App = () => {
   return (
@@ -20,7 +19,7 @@ const App = () => {
           <Route path="/saved-recipes" element={<SavedRecipes />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<RegisterForm />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
     </BrowserRouter>
   );
