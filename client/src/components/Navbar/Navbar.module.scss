@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
+
 .navbar {
   margin: 0;
   width: 100%;
@@ -7,6 +9,7 @@
   align-items: center;
   background: black;
   color: white;
+  font-family: "Tilt Prism", cursive;
 }
 
 .container {
@@ -32,6 +35,7 @@
   text-align: center;
 
   a {
+    font-family: "Raleway", sans-serif;
     cursor: pointer;
     padding: 15px;
     background: linear-gradient(currentColor 0 0) left var(--p, 50%) bottom 0 /
