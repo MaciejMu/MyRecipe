@@ -1,12 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import RecipeTile from "../components/RecipeTile/RecipeTile";
+import Container from "../components/Container/Container";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faHeart as saved } from "@fortawesome/free-solid-svg-icons";
-// import { faHeart as unsaved } from "@fortawesome/free-regular-svg-icons";
-import SaveRecipeButton from "../components/SaveRecipeButton/SaveRecipeButton";
-
-type Recipe = {
+type RecipeProps = {
   _id: string;
   name: string;
   description: string;
@@ -18,7 +15,7 @@ type Recipe = {
 };
 
 const Home = () => {
-  const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [recipes, setRecipes] = useState<RecipeProps[]>([]);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -34,27 +31,16 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Recipes</h1>
+    <Container>
+      <h1>All Recipes</h1>
       <ul>
         {recipes.map((recipe) => (
           <li key={recipe._id}>
-            <div>
-              <h2>{recipe.name}</h2>
-              <SaveRecipeButton recipeId={recipe._id} />
-            </div>
-            <div>
-              <p>{recipe.description}</p>
-            </div>
-            <div className="instructions">
-              <p>{recipe.instructions}</p>
-            </div>
-            <img src={recipe.imageUrl} alt={recipe.name} />
-            <p>Cooking Time: {recipe.cookingTime} minutes</p>
+            <RecipeTile recipe={recipe} />
           </li>
         ))}
       </ul>
-    </div>
+    </Container>
   );
 };
 

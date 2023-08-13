@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import getUserId from "../../hooks/getUserId";
+import style from "./SaveRecipeButton.module.scss";
 
 const SaveRecipeButton = ({ recipeId }: { recipeId: string }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -50,19 +51,21 @@ const SaveRecipeButton = ({ recipeId }: { recipeId: string }) => {
     <>
       {cookies.access_token ? (
         isRecipeSaved(recipeId) ? (
-          <FontAwesomeIcon icon={saved} className="heart" />
+          <button className="saveButton" disabled>
+            <FontAwesomeIcon icon={saved} className={style.heart} />
+          </button>
         ) : (
           <button
-            className="saveButton"
+            className={style.saveButton}
             disabled={isRecipeSaved(recipeId)}
             onClick={() => saveRecipe(recipeId)}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
           >
             {isHover ? (
-              <FontAwesomeIcon icon={saved} className="heart" />
+              <FontAwesomeIcon icon={saved} className={style.heart} />
             ) : (
-              <FontAwesomeIcon icon={unsaved} className="heart" />
+              <FontAwesomeIcon icon={unsaved} className={style.heart} />
             )}
           </button>
         )

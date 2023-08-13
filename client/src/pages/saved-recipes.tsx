@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import getUserID from "../hooks/getUserId";
+import Container from "../components/Container/Container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 type Recipe = {
   _id: string;
   name: string;
+  description: string;
   ingredients: string[];
   instructions: string[];
   imageUrl: string;
@@ -33,27 +37,32 @@ const SavedRecipes = () => {
   }, []);
 
   return (
-    <div>
+    <Container>
       <h1>Saved Recipes</h1>
       <ul>
         {savedRecipes ? (
           savedRecipes.map((recipe) => (
             <li key={recipe._id}>
-              <div>
-                <h2>{recipe.name}</h2>
+              <div className="recipeTextContainer">
+                <div className="recipeHeader">
+                  <h2>{recipe.name}</h2>
+                </div>
+                <div>
+                  <p>{recipe.description}</p>
+                </div>
+                <p>Cooking Time: {recipe.cookingTime} minutes</p>
               </div>
-              <div className="instructions">
-                <p>{recipe.instructions}</p>
-              </div>
+
               <img src={recipe.imageUrl} alt={recipe.name} />
-              <p>Cooking Time: {recipe.cookingTime} minutes</p>
+
+              <FontAwesomeIcon icon={faXTwitter} className="delete" />
             </li>
           ))
         ) : (
           <div>You have not saved recipes yet</div>
         )}
       </ul>
-    </div>
+    </Container>
   );
 };
 

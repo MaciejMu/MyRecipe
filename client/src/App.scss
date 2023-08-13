@@ -1,11 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+body {
   font-family: "Raleway", sans-serif;
+}
+
+.recipeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recipeTextContainer {
+  width: 100%;
+  max-width: 40%;
 }
 
 body {
@@ -85,29 +92,16 @@ a {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-li {
-  border: 1px solid black;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-h2 {
-  margin-top: 0;
-}
-
 img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-img {
-  width: 400px;
+  width: 300px;
 }
 
 p {
@@ -119,14 +113,7 @@ h1 {
   font-family: "Tilt Prism", cursive;
 }
 
-.saveButton {
-  background: none;
-  padding: 10px;
-  border: none;
+.delete {
   cursor: pointer;
-}
-
-.heart {
-  height: auto;
-  width: 20px;
+  padding: 20px;
 }

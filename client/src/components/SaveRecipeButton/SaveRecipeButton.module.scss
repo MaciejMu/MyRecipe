@@ -1,0 +1,24 @@
+.saveButton {
+  background: none;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+
+  &:active {
+    scale: 1.5;
+  }
+}
+
+.saveButton:disabled,
+button[disabled] {
+  color: red;
+  background: none;
+  padding: 10px;
+  border: none;
+}
+
+.heart {
+  color: white;
+  height: auto;
+  width: 20px;
+}
