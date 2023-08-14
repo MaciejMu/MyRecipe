@@ -1,10 +1,11 @@
+import Container from "../components/Container/Container";
 import LoginForm from "../components/LoginForm/LoginForm";
 
 const Login = () => {
   return (
-    <div className="auth">
+    <Container>
       <LoginForm />
-    </div>
+    </Container>
   );
 };
 

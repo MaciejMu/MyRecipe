@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import getUserId from "../../hooks/getUserId";
 import { useCookies } from "react-cookie";
 import Button from "../Button/Button";
+import style from "./CreateRecipeForm.module.scss";
 
 const CreateRecipeForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -72,7 +73,7 @@ const CreateRecipeForm = () => {
   return (
     <>
       <h1>Create Recipe</h1>
-      <div className="create-recipe">
+      <div className={style.container}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input
@@ -103,7 +104,7 @@ const CreateRecipeForm = () => {
             />
           ))}
           <Button type="button" onClick={handleAddIngredient}>
-            + Add Ingredient
+            ▼ Add Ingredient
           </Button>
           <label htmlFor="instructions">Instructions</label>
           {recipe.instructions.map((instruction, index) => (
@@ -117,7 +118,7 @@ const CreateRecipeForm = () => {
             />
           ))}
           <Button type="button" onClick={handleAddInstruction}>
-            + Add Instruction
+            ▼ Add Instruction
           </Button>
           <label htmlFor="imageUrl">Image URL</label>
           <input
@@ -137,7 +138,7 @@ const CreateRecipeForm = () => {
             value={recipe.cookingTime}
             onChange={handleChange}
           />
-          <Button type="submit">✓ Create Recipe</Button>
+          <Button type="submit">✚ Create Recipe</Button>
         </form>
       </div>
     </>

@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 400px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+    padding-bottom: 20px;
+
+    &:hover {
+      color: rgb(121, 116, 116);
+    }
+  }
+
+  p {
+    font-size: 14px;
+    margin: 30px 0 0;
+  }
+
+  span {
+    text-align: center;
+  }
+}

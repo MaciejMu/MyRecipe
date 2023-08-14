@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
+import Button from "../Button/Button";
+import style from "./LoginForm.module.scss";
 
 const Login = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -32,7 +34,7 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className={style.container}>
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <div className="form-group">
@@ -55,12 +57,18 @@ const Login = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? <BeatLoader color="#000000" /> : "Login"}
-        </button>
+        {isLoading ? (
+          <BeatLoader color="#000000" />
+        ) : (
+          <Button type="submit" disabled={isLoading}>
+            Login
+          </Button>
+        )}
       </form>
-      <p>Don't have an account?</p>
-      <Link to="/register">Join now</Link>
+      <span>
+        <p>Don't have an account?</p>
+        <Link to="/register">Join now</Link>
+      </span>
     </div>
   );
 };
