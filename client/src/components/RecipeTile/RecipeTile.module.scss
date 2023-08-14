@@ -3,10 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  // max-width: 300px;
-  // max-height: 200px;
-  // height: 100%;
-  // width: 100%;
   border: 1px solid black;
   cursor: pointer;
 
@@ -28,6 +24,7 @@
   }
 
   h2 {
+    font-family: "Raleway", sans-serif;
     max-width: 80%;
     margin: 0;
     color: white;

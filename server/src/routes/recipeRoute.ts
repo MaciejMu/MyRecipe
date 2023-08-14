@@ -6,12 +6,14 @@ import {
   getAllRecipes,
   getIdOfSavedRecipes,
   getSavedRecipes,
+  getSingleRecipe,
 } from "../controllers/recipeControllers";
 
 const router = express.Router();
 
 router
   .get("/", getAllRecipes)
+  .get("/:recipeID", getSingleRecipe)
   .post("/", verifyToken, addNewRecipe)
   .put("/", addtoSavedRecipes)
   .get("/saved-recipes/:userID", getSavedRecipes)

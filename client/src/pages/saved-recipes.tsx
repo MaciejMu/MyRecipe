@@ -19,7 +19,10 @@ const SavedRecipes = () => {
   const userID = getUserID();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
-  console.log(savedRecipes);
+
+  useEffect(() => {
+    document.title = "MyRecipe - Saved Recipes";
+  }, []);
 
   useEffect(() => {
     const fetchSavedRecipe = async () => {
@@ -41,7 +44,7 @@ const SavedRecipes = () => {
       {savedRecipes.length > 0 ? (
         <ul>
           {savedRecipes.map((recipe) => (
-            <SavedRecipeTile recipe={recipe} />
+            <SavedRecipeTile recipe={recipe} key={recipe._id} />
           ))}
         </ul>
       ) : (

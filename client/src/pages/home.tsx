@@ -18,6 +18,10 @@ const Home = () => {
   const [recipes, setRecipes] = useState<RecipeProps[]>([]);
 
   useEffect(() => {
+    document.title = "MyRecipe";
+  }, []);
+
+  useEffect(() => {
     const fetchRecipe = async () => {
       try {
         const response = await axios.get("http://localhost:3001/recipes");

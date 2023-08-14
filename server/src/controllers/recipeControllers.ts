@@ -11,6 +11,15 @@ export const getAllRecipes = async (req: Request, res: Response) => {
   }
 };
 
+export const getSingleRecipe = async (req: Request, res: Response) => {
+  try {
+    const response = await RecipeModel.findById(req.params.recipeID);
+    res.json(response);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 export const addNewRecipe = async (req: Request, res: Response) => {
   const recipe = new RecipeModel(req.body);
   try {

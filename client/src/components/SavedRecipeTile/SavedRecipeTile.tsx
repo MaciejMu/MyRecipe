@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { RecipeProps } from "../../pages/Home";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -5,8 +6,8 @@ import style from "./SavedRecipeTile.module.scss";
 
 const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   return (
-    <>
-      <li key={recipe._id} className={style.tile}>
+    <li>
+      <Link to={`/${recipe._id}`} className={style.tile}>
         <div>
           <span>
             <h2>{recipe.name.toUpperCase()}</h2>
@@ -16,8 +17,8 @@ const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
         </div>
         <img src={recipe.imageUrl} alt={recipe.name} />
         {/* <FontAwesomeIcon icon={faXTwitter} className="delete" /> */}
-      </li>
-    </>
+      </Link>
+    </li>
   );
 };
 

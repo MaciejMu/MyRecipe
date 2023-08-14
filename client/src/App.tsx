@@ -6,9 +6,15 @@ import PrivateRoutes from "./utilis/PrivateRoutes";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SavedRecipes from "./pages/Saved-recipes";
-import Register from "./Register";
+import SingleRecipe from "./pages/SingleRecipe";
+import { useEffect } from "react";
+import Register from "./pages/Register";
 
 const App = () => {
+  useEffect(() => {
+    document.title = "MyRecipe";
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -20,6 +26,7 @@ const App = () => {
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
+        <Route path="/:recipeID" element={<SingleRecipe />}></Route>
       </Routes>
     </BrowserRouter>
   );

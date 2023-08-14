@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
+import style from "./RegisterForm.module.scss";
+import Button from "../Button/Button";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
@@ -30,7 +32,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className={style.container}>
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
         <div className="form-group">
@@ -53,9 +55,13 @@ const RegisterForm = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? <BeatLoader color="#000000" /> : "Register"}
-        </button>
+        {isLoading ? (
+          <BeatLoader color="#000000" />
+        ) : (
+          <Button type="submit" disabled={isLoading}>
+            Register
+          </Button>
+        )}
       </form>
     </div>
   );
