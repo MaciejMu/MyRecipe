@@ -33,6 +33,7 @@
   justify-content: end;
   align-items: center;
   text-align: center;
+  z-index: 2;
 
   a {
     cursor: pointer;
@@ -64,4 +65,10 @@
 
 .userNavigate:hover > .dropdown {
   display: flex;
+}
+
+h1 {
+  @media (max-width: 500px) {
+    font-size: 30px;
+  }
 }

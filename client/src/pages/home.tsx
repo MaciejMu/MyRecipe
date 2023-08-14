@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import RecipeTile from "../components/RecipeTile/RecipeTile";
 import Container from "../components/Container/Container";
+import RecipesTilesGrid from "../components/RecipesTilesGrid/RecipesTilesGrid";
 
-type RecipeProps = {
+export type RecipeProps = {
   _id: string;
   name: string;
   description: string;
@@ -33,13 +33,7 @@ const Home = () => {
   return (
     <Container>
       <h1>All Recipes</h1>
-      <ul>
-        {recipes.map((recipe) => (
-          <li key={recipe._id}>
-            <RecipeTile recipe={recipe} />
-          </li>
-        ))}
-      </ul>
+      <RecipesTilesGrid recipes={recipes} />
     </Container>
   );
 };

@@ -2,8 +2,12 @@ import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import getUserId from "../../hooks/getUserId";
+import { useCookies } from "react-cookie";
+import Button from "../Button/Button";
 
 const CreateRecipeForm = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cookies, _] = useCookies();
   const userID = getUserId();
   const [recipe, setRecipe] = useState({
     name: "",
@@ -48,7 +52,9 @@ const CreateRecipeForm = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      axios.post("http://localhost:3001/recipes", recipe);
+      axios.post("http://localhost:3001/recipes", recipe, {
+        headers: { authorization: cookies.access_token },
+      });
       alert("Recipe created!");
       navigate("/");
     } catch (err) {
@@ -96,9 +102,9 @@ const CreateRecipeForm = () => {
               onChange={(event) => handleIngredientChange(event, index)}
             />
           ))}
-          <button type="button" onClick={handleAddIngredient}>
-            Add Ingredient
-          </button>
+          <Button type="button" onClick={handleAddIngredient}>
+            + Add Ingredient
+          </Button>
           <label htmlFor="instructions">Instructions</label>
           {recipe.instructions.map((instruction, index) => (
             <input
@@ -110,9 +116,9 @@ const CreateRecipeForm = () => {
               onChange={(event) => handleInstructionChange(event, index)}
             />
           ))}
-          <button type="button" onClick={handleAddInstruction}>
-            Add Instruction
-          </button>
+          <Button type="button" onClick={handleAddInstruction}>
+            + Add Instruction
+          </Button>
           <label htmlFor="imageUrl">Image URL</label>
           <input
             required
@@ -131,7 +137,7 @@ const CreateRecipeForm = () => {
             value={recipe.cookingTime}
             onChange={handleChange}
           />
-          <button type="submit">Create Recipe</button>
+          <Button type="submit">✓ Create Recipe</Button>
         </form>
       </div>
     </>

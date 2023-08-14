@@ -19,8 +19,8 @@ type Recipe = {
 const SavedRecipes = () => {
   const userID = getUserID();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
+  console.log(savedRecipes);
 
   useEffect(() => {
     const fetchSavedRecipe = async () => {
@@ -39,9 +39,9 @@ const SavedRecipes = () => {
   return (
     <Container>
       <h1>Saved Recipes</h1>
-      <ul>
-        {savedRecipes ? (
-          savedRecipes.map((recipe) => (
+      {savedRecipes.length > 0 ? (
+        <ul>
+          {savedRecipes.map((recipe) => (
             <li key={recipe._id}>
               <div className="recipeTextContainer">
                 <div className="recipeHeader">
@@ -52,16 +52,14 @@ const SavedRecipes = () => {
                 </div>
                 <p>Cooking Time: {recipe.cookingTime} minutes</p>
               </div>
-
               <img src={recipe.imageUrl} alt={recipe.name} />
-
               <FontAwesomeIcon icon={faXTwitter} className="delete" />
             </li>
-          ))
-        ) : (
-          <div>You have not saved recipes yet</div>
-        )}
-      </ul>
+          ))}
+        </ul>
+      ) : (
+        <h2>You have not saved recipes yet</h2>
+      )}
     </Container>
   );
 };

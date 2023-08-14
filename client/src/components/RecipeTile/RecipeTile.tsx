@@ -23,11 +23,15 @@ const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
       <div className={style.topContianer}>
         <SaveRecipeButton recipeId={recipe._id} />
         <b>
-          <FontAwesomeIcon icon={faClock} className={style.clockIcon} />{" "}
+          <FontAwesomeIcon icon={faClock} className={style.clockIcon} />
           {recipe.cookingTime}min
         </b>
       </div>
-      <img src={recipe.imageUrl} alt={recipe.name} />
+      <img
+        src={recipe.imageUrl}
+        alt={recipe.name}
+        className={style.recipeImage}
+      />
     </div>
   );
 };

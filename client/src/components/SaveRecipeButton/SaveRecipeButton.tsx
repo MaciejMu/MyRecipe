@@ -51,21 +51,20 @@ const SaveRecipeButton = ({ recipeId }: { recipeId: string }) => {
     <>
       {cookies.access_token ? (
         isRecipeSaved(recipeId) ? (
-          <button className="saveButton" disabled>
-            <FontAwesomeIcon icon={saved} className={style.heart} />
+          <button disabled>
+            <FontAwesomeIcon icon={saved} className={style.savedRecipe} />
           </button>
         ) : (
           <button
-            className={style.saveButton}
             disabled={isRecipeSaved(recipeId)}
             onClick={() => saveRecipe(recipeId)}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
           >
             {isHover ? (
-              <FontAwesomeIcon icon={saved} className={style.heart} />
+              <FontAwesomeIcon icon={saved} className={style.savedButton} />
             ) : (
-              <FontAwesomeIcon icon={unsaved} className={style.heart} />
+              <FontAwesomeIcon icon={unsaved} className={style.unsavedButton} />
             )}
           </button>
         )
