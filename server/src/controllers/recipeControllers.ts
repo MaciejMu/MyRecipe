@@ -30,6 +30,22 @@ export const addNewRecipe = async (req: Request, res: Response) => {
   }
 };
 
+export const unsaveRecipe = async (req: Request, res: Response) => {
+  try {
+    const recipeID = req.params.recipeID;
+    const userID = req.body.userID;
+
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      userID,
+      { $pull: { savedRecipes: recipeID } },
+      { new: true }
+    );
+    res.json({ updatedUser });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 export const addtoSavedRecipes = async (req: Request, res: Response) => {
   const recipe = await RecipeModel.findById(req.body.recipeID);
   const user = await UserModel.findById(req.body.userID);

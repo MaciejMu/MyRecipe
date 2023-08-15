@@ -7,6 +7,7 @@ import {
   getIdOfSavedRecipes,
   getSavedRecipes,
   getSingleRecipe,
+  unsaveRecipe,
   updateLikesCounter,
 } from "../controllers/recipeControllers";
 
@@ -16,6 +17,7 @@ router
   .get("/", getAllRecipes)
   .get("/:recipeID", getSingleRecipe)
   .post("/", verifyToken, addNewRecipe)
+  .patch("/:recipeID", unsaveRecipe)
   .put("/", addtoSavedRecipes)
   .patch("/", updateLikesCounter)
   .get("/saved-recipes/:userID", getSavedRecipes)
