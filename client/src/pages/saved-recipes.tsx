@@ -3,22 +3,13 @@ import { useState, useEffect } from "react";
 import getUserID from "../hooks/getUserId";
 import Container from "../components/Container/Container";
 import SavedRecipeTile from "../components/SavedRecipeTile/SavedRecipeTile";
-
-type Recipe = {
-  _id: string;
-  name: string;
-  description: string;
-  ingredients: string[];
-  instructions: string[];
-  imageUrl: string;
-  cookingTime: number;
-  creator: string;
-};
+import { RecipeProps } from "./Home";
 
 const SavedRecipes = () => {
   const userID = getUserID();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
+  const [savedRecipes, setSavedRecipes] = useState<RecipeProps[]>([]);
+  // const [];
 
   useEffect(() => {
     document.title = "MyRecipe - Saved Recipes";

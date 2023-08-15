@@ -34,6 +34,11 @@ const RecipeSchema = new mongoose.Schema({
     ref: "users",
     require: true,
   },
+  likesCounter: {
+    type: Number,
+    require: true,
+    default: 0,
+  },
 });
 
 export const RecipeModel = mongoose.model("recipes", RecipeSchema);

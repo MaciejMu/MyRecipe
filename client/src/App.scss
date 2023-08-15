@@ -44,12 +44,16 @@ label {
 }
 
 input {
+  font-family: "Raleway", sans-serif;
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
 }
 
 textarea {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  padding: 10px;
   height: 100px;
   resize: none;
   border: 2px solid black;

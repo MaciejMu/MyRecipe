@@ -43,6 +43,20 @@ export const addtoSavedRecipes = async (req: Request, res: Response) => {
   }
 };
 
+export const updateLikesCounter = async (req: Request, res: Response) => {
+  try {
+    req.body.likesCounter++;
+    const recipe = await RecipeModel.findByIdAndUpdate(
+      { _id: req.body.recipeID },
+      req.body,
+      { new: true }
+    );
+    res.json(recipe);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 export const getIdOfSavedRecipes = async (req: Request, res: Response) => {
   try {
     const user = await UserModel.findById(req.params.userID);

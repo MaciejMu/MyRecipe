@@ -1,4 +1,5 @@
 .savedButton {
+  display: flex;
   background: none;
   height: auto;
   width: 20px;
@@ -24,6 +25,9 @@
 }
 
 button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
 }

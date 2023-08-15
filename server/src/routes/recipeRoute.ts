@@ -7,6 +7,7 @@ import {
   getIdOfSavedRecipes,
   getSavedRecipes,
   getSingleRecipe,
+  updateLikesCounter,
 } from "../controllers/recipeControllers";
 
 const router = express.Router();
@@ -16,6 +17,7 @@ router
   .get("/:recipeID", getSingleRecipe)
   .post("/", verifyToken, addNewRecipe)
   .put("/", addtoSavedRecipes)
+  .patch("/", updateLikesCounter)
   .get("/saved-recipes/:userID", getSavedRecipes)
   .get("/saved-recipes/ids/:userID", getIdOfSavedRecipes);
 

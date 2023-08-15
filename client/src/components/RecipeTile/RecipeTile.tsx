@@ -2,17 +2,7 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./RecipeTile.module.scss";
-
-type RecipeProps = {
-  _id: string;
-  name: string;
-  description: string;
-  ingredients: string[];
-  instructions: string[];
-  imageUrl: string;
-  cookingTime: number;
-  creator: string;
-};
+import { RecipeProps } from "../../pages/Home";
 
 const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   return (
@@ -21,7 +11,10 @@ const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
         <h2>{recipe.name.toUpperCase()}</h2>
       </div>
       <div className={style.topContianer}>
-        <SaveRecipeButton recipeId={recipe._id} />
+        <SaveRecipeButton
+          recipeId={recipe._id}
+          numberOfLikes={recipe.likesCounter}
+        />
         <b>
           <FontAwesomeIcon icon={faClock} className={style.clockIcon} />
           {recipe.cookingTime}min

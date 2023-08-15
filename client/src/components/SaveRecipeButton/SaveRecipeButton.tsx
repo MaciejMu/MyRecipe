@@ -7,7 +7,13 @@ import axios from "axios";
 import getUserId from "../../hooks/getUserId";
 import style from "./SaveRecipeButton.module.scss";
 
-const SaveRecipeButton = ({ recipeId }: { recipeId: string }) => {
+const SaveRecipeButton = ({
+  recipeId,
+  numberOfLikes,
+}: {
+  recipeId: string;
+  numberOfLikes: number;
+}) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, _] = useCookies();
   const [isHover, setIsHover] = useState(false);
@@ -25,7 +31,6 @@ const SaveRecipeButton = ({ recipeId }: { recipeId: string }) => {
         console.log(err);
       }
     };
-
     if (cookies.access_token) fetchSavedRecipe();
   }, []);
 
@@ -41,6 +46,10 @@ const SaveRecipeButton = ({ recipeId }: { recipeId: string }) => {
         },
         { headers: { authorization: cookies.access_token } }
       );
+      await axios.patch("http://localhost:3001/recipes", {
+        recipeID,
+        likesCounter: numberOfLikes,
+      });
       setSavedRepices(response.data.savedRecipes);
     } catch (err) {
       console.log(err);

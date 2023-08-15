@@ -18,6 +18,7 @@ const CreateRecipeForm = () => {
     imageUrl: "",
     cookingTime: 0,
     creator: userID,
+    likesCounter: 0,
   });
 
   const navigate = useNavigate();

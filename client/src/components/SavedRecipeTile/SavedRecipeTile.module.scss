@@ -4,6 +4,16 @@
   justify-content: space-between;
   width: 70%;
   border: 2px solid black;
+  min-height: 250px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+
+    img {
+      min-width: 100%;
+      max-height: 400px;
+    }
+  }
 
   div {
     display: flex;
@@ -13,6 +23,7 @@
   }
 
   img {
+    object-fit: none;
     max-width: 40%;
   }
 

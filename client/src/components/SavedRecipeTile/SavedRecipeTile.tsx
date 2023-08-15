@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { RecipeProps } from "../../pages/Home";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import style from "./SavedRecipeTile.module.scss";
 
 const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
@@ -16,7 +14,6 @@ const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
           <p>Cooking Time: {recipe.cookingTime} minutes</p>
         </div>
         <img src={recipe.imageUrl} alt={recipe.name} />
-        {/* <FontAwesomeIcon icon={faXTwitter} className="delete" /> */}
       </Link>
     </li>
   );

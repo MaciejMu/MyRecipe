@@ -12,6 +12,7 @@ export type RecipeProps = {
   imageUrl: string;
   cookingTime: number;
   creator: string;
+  likesCounter: number;
 };
 
 const Home = () => {

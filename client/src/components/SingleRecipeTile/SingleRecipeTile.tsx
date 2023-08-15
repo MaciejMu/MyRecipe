@@ -6,6 +6,7 @@ import Container from "../Container/Container";
 import style from "./SingleRecipeTile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
+import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 
 const SingleRecipeTile = () => {
   const params = useParams();
@@ -33,10 +34,17 @@ const SingleRecipeTile = () => {
     <Container>
       {recipe ? (
         <section className={style.section}>
-          <span>
+          <div className={style.topContainer}>
             <h2>{recipe?.name}</h2>
             <h4>Cooking Time: {recipe.cookingTime} minutes</h4>
-          </span>
+            <span>
+              <SaveRecipeButton
+                recipeId={recipe._id}
+                numberOfLikes={recipe.likesCounter}
+              />
+              <p>{recipe?.likesCounter}</p>
+            </span>
+          </div>
           <p>{recipe.description}</p>
           <img src={recipe.imageUrl} alt={recipe.name} />
           <h3>Ingredients</h3>
