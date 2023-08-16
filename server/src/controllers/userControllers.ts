@@ -44,6 +44,15 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
+export const getUserName = async (req: Request, res: Response) => {
+  try {
+    const user = await UserModel.findById(req.params.userID);
+    res.json(user?.username);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
 export const verifyToken = (
   req: Request,
   res: Response,

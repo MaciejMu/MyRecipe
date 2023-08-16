@@ -136,6 +136,8 @@ const CreateRecipeForm = () => {
             type="number"
             id="cookingTime"
             name="cookingTime"
+            max={420}
+            min={1}
             value={recipe.cookingTime}
             onChange={handleChange}
           />

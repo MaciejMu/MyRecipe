@@ -7,9 +7,11 @@ import {
   faUser,
   faWineBottle,
 } from "@fortawesome/free-solid-svg-icons";
+import UserName from "../Username/Username";
 
 const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
+
   const navigate = useNavigate();
 
   const logout = () => {
@@ -36,7 +38,12 @@ const Navbar = () => {
           </Link>
         ) : (
           <div className={style.userNavigate}>
-            <FontAwesomeIcon icon={faUser} className={style.icon} />
+            <span>
+              <b>
+                <UserName />
+              </b>
+              <FontAwesomeIcon icon={faUser} className={style.icon} />
+            </span>
             <div className={style.dropdown}>
               <Link to={"/create-recipe"}>Create Recipe</Link>
               <Link to={"/saved-recipes"}>Saved Recipe</Link>

@@ -15,7 +15,7 @@ const RegisterForm = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:3001/auth/register", {
+      await axios.post("http://localhost:3001/user/register", {
         username,
         password,
       });
@@ -37,6 +37,7 @@ const RegisterForm = () => {
             required
             type="text"
             id="username"
+            maxLength={10}
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
