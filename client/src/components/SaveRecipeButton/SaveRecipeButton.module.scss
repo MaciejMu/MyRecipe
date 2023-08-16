@@ -16,6 +16,7 @@
   color: red;
   height: auto;
   width: 20px;
+  cursor: pointer;
 }
 
 .unsavedButton {
@@ -30,4 +31,8 @@ button {
   justify-content: center;
   background: none;
   border: none;
+}
+
+.black {
+  color: black;
 }

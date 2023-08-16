@@ -6,19 +6,30 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import getUserId from "../../hooks/getUserId";
 import style from "./SaveRecipeButton.module.scss";
+import clsx from "clsx";
+import { ClipLoader } from "react-spinners";
+import { Link } from "react-router-dom";
 
 const SaveRecipeButton = ({
   recipeId,
-  numberOfLikes,
+  black,
+  likesCounter,
+  initailCounter,
 }: {
   recipeId: string;
-  numberOfLikes: number;
+  black?: boolean;
+  likesCounter?: boolean;
+  initailCounter?: number;
 }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, _] = useCookies();
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(unsaved);
   const [savedRecipes, setSavedRepices] = useState<string[]>([]);
   const userID = getUserId();
+  const [isLoading, setIsLoading] = useState(false);
+  const [numberOfLikes, setNumberOfLikes] = useState<number | undefined>(
+    initailCounter
+  );
 
   useEffect(() => {
     const fetchSavedRecipe = async () => {
@@ -37,47 +48,110 @@ const SaveRecipeButton = ({
   const isRecipeSaved = (id: string) => savedRecipes?.includes(id);
 
   const saveRecipe = async (recipeID: string) => {
+    setIsLoading(true);
     try {
-      const response = await axios.put(
-        "http://localhost:3001/recipes",
+      const saveResponse = await axios.put(
+        "http://localhost:3001/recipes/save",
         {
           recipeID,
           userID,
         },
         { headers: { authorization: cookies.access_token } }
       );
-      await axios.patch("http://localhost:3001/recipes", {
-        recipeID,
-        likesCounter: numberOfLikes,
-      });
-      setSavedRepices(response.data.savedRecipes);
+      const addResponse = await axios.patch(
+        "http://localhost:3001/recipes/counter-add",
+        {
+          recipeID,
+        },
+        { headers: { authorization: cookies.access_token } }
+      );
+      setSavedRepices(saveResponse.data.savedRecipes);
+      setNumberOfLikes(addResponse.data.likesCounter);
     } catch (err) {
       console.log(err);
     }
+    setIsLoading(false);
+  };
+
+  const unsaveRecipe = async (recipeID: string) => {
+    setIsLoading(true);
+    try {
+      const unsaveResponse = await axios.patch(
+        `http://localhost:3001/recipes/unsave`,
+        {
+          userID,
+          recipeID,
+        },
+        { headers: { authorization: cookies.access_token } }
+      );
+      const subtractResponse = await axios.patch(
+        "http://localhost:3001/recipes/counter-subtract",
+        {
+          recipeID,
+        },
+        { headers: { authorization: cookies.access_token } }
+      );
+      setSavedRepices(unsaveResponse.data.savedRecipes);
+      setNumberOfLikes(subtractResponse.data.likesCounter);
+    } catch (err) {
+      console.log(err);
+    }
+    setIsLoading(false);
   };
 
   return (
     <>
       {cookies.access_token ? (
         isRecipeSaved(recipeId) ? (
-          <button disabled>
-            <FontAwesomeIcon icon={saved} className={style.savedRecipe} />
+          <button disabled={isLoading}>
+            {isLoading ? (
+              <ClipLoader
+                color={black ? "#000000" : "#ffffff"}
+                size={15}
+                className={clsx(black && style.black)}
+              />
+            ) : (
+              <FontAwesomeIcon
+                icon={saved}
+                className={style.savedRecipe}
+                onClick={() => unsaveRecipe(recipeId)}
+              />
+            )}
           </button>
         ) : (
           <button
-            disabled={isRecipeSaved(recipeId)}
+            disabled={isLoading}
             onClick={() => saveRecipe(recipeId)}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
+            onMouseEnter={() => setIsHover(saved)}
+            onMouseLeave={() => setIsHover(unsaved)}
           >
-            {isHover ? (
-              <FontAwesomeIcon icon={saved} className={style.savedButton} />
+            {isLoading ? (
+              <ClipLoader
+                color={black ? "#000000" : "#ffffff"}
+                size={15}
+                className={clsx(black && style.black)}
+              />
             ) : (
-              <FontAwesomeIcon icon={unsaved} className={style.unsavedButton} />
+              <FontAwesomeIcon
+                icon={isHover}
+                className={clsx(style.savedButton, black && style.black)}
+              />
             )}
           </button>
         )
-      ) : null}
+      ) : (
+        <Link
+          to={"/login"}
+          onMouseEnter={() => setIsHover(saved)}
+          onMouseLeave={() => setIsHover(unsaved)}
+        >
+          <FontAwesomeIcon
+            icon={isHover}
+            className={clsx(style.savedButton, black && style.black)}
+          />
+        </Link>
+      )}
+      {likesCounter ? <p>{numberOfLikes}</p> : null}
     </>
   );
 };

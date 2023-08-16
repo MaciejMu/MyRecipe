@@ -20,6 +20,7 @@ const SingleRecipeTile = () => {
         );
         setRecipe(response.data);
       } catch (err) {
+        ``;
         console.log(err);
       }
     };
@@ -39,10 +40,11 @@ const SingleRecipeTile = () => {
             <h4>Cooking Time: {recipe.cookingTime} minutes</h4>
             <span>
               <SaveRecipeButton
+                black
                 recipeId={recipe._id}
-                numberOfLikes={recipe.likesCounter}
+                likesCounter
+                initailCounter={recipe.likesCounter}
               />
-              <p>{recipe?.likesCounter}</p>
             </span>
           </div>
           <p>{recipe.description}</p>
@@ -64,7 +66,7 @@ const SingleRecipeTile = () => {
           </button>
         </section>
       ) : (
-        <h2>Loading...</h2>
+        <h2>Something went wong...</h2>
       )}
     </Container>
   );

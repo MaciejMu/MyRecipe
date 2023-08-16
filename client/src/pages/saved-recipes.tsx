@@ -9,7 +9,6 @@ const SavedRecipes = () => {
   const userID = getUserID();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [savedRecipes, setSavedRecipes] = useState<RecipeProps[]>([]);
-  // const [];
 
   useEffect(() => {
     document.title = "MyRecipe - Saved Recipes";

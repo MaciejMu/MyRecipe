@@ -58,6 +58,7 @@
 
       p {
         font-size: 28px;
+        transform: translateY(-5%);
 
         @media print {
           display: none;
@@ -67,6 +68,10 @@
       button {
         padding: 10px 5px;
         margin: 0;
+
+        svg {
+          width: 25px;
+        }
       }
     }
   }
