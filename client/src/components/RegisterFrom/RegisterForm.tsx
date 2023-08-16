@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import style from "./RegisterForm.module.scss";
@@ -11,9 +10,6 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_, setCookies] = useCookies(["access_token"]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

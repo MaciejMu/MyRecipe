@@ -11,10 +11,7 @@ const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
         <h2>{recipe.name.toUpperCase()}</h2>
       </div>
       <div className={style.topContianer}>
-        <SaveRecipeButton
-          recipeId={recipe._id}
-          numberOfLikes={recipe.likesCounter}
-        />
+        <SaveRecipeButton recipeId={recipe._id} />
         <b>
           <FontAwesomeIcon icon={faClock} className={style.clockIcon} />
           {recipe.cookingTime}min
