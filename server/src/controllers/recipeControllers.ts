@@ -32,7 +32,7 @@ export const addNewRecipe = async (req: Request, res: Response) => {
 
 export const unsaveRecipe = async (req: Request, res: Response) => {
   try {
-    const recipeID = req.params.recipeID;
+    const recipeID = req.body.recipeID;
     const userID = req.body.userID;
 
     const updatedUser = await UserModel.findByIdAndUpdate(
@@ -59,12 +59,26 @@ export const addtoSavedRecipes = async (req: Request, res: Response) => {
   }
 };
 
-export const updateLikesCounter = async (req: Request, res: Response) => {
+export const addLikesCounter = async (req: Request, res: Response) => {
   try {
-    req.body.likesCounter++;
+    const recipeID = req.body.recipeID;
     const recipe = await RecipeModel.findByIdAndUpdate(
-      { _id: req.body.recipeID },
-      req.body,
+      recipeID,
+      { $inc: { likesCounter: 1 } },
+      { new: true }
+    );
+    res.json(recipe);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+export const subtractLikesCounter = async (req: Request, res: Response) => {
+  try {
+    const recipeID = req.body.recipeID;
+    const recipe = await RecipeModel.findByIdAndUpdate(
+      recipeID,
+      { $inc: { likesCounter: -1 } },
       { new: true }
     );
     res.json(recipe);

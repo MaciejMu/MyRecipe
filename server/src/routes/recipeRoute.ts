@@ -1,14 +1,15 @@
 import express from "express";
 import { verifyToken } from "../controllers/userControllers";
 import {
+  addLikesCounter,
   addNewRecipe,
   addtoSavedRecipes,
   getAllRecipes,
   getIdOfSavedRecipes,
   getSavedRecipes,
   getSingleRecipe,
+  subtractLikesCounter,
   unsaveRecipe,
-  updateLikesCounter,
 } from "../controllers/recipeControllers";
 
 const router = express.Router();
@@ -17,9 +18,10 @@ router
   .get("/", getAllRecipes)
   .get("/:recipeID", getSingleRecipe)
   .post("/", verifyToken, addNewRecipe)
-  .patch("/:recipeID", unsaveRecipe)
-  .put("/", addtoSavedRecipes)
-  .patch("/", updateLikesCounter)
+  .patch("/unsave", verifyToken, unsaveRecipe)
+  .put("/save", verifyToken, addtoSavedRecipes)
+  .patch("/counter-add", verifyToken, addLikesCounter)
+  .patch("/counter-subtract", verifyToken, subtractLikesCounter)
   .get("/saved-recipes/:userID", getSavedRecipes)
   .get("/saved-recipes/ids/:userID", getIdOfSavedRecipes);
 
