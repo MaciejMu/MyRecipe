@@ -29,7 +29,10 @@ const Navbar = () => {
         </Link>
         {!cookies.access_token ? (
           <Link to={"/login"}>
-            <FontAwesomeIcon icon={faRightToBracket} className={style.icon} />
+            <span>
+              <b>Login</b>
+              <FontAwesomeIcon icon={faRightToBracket} className={style.icon} />
+            </span>
           </Link>
         ) : (
           <div className={style.userNavigate}>

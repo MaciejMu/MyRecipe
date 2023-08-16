@@ -15,10 +15,24 @@
 .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   max-height: 100px;
   width: 100%;
   max-width: 1400px;
   justify-content: space-around;
+
+  span {
+    display: flex;
+    color: white;
+    cursor: pointer;
+    font-family: "Raleway", sans-serif;
+    gap: 10px;
+    padding: 10px;
+
+    .icon {
+      padding: 0px;
+    }
+  }
 }
 
 .icon {
