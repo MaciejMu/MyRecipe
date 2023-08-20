@@ -47,7 +47,11 @@ const SaveRecipeButton = ({
 
   const isRecipeSaved = (id: string) => savedRecipes?.includes(id);
 
-  const saveRecipe = async (recipeID: string) => {
+  const saveRecipe = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    recipeID: string
+  ) => {
+    e.preventDefault();
     setIsLoading(true);
     try {
       const saveResponse = await axios.put(
@@ -73,7 +77,11 @@ const SaveRecipeButton = ({
     setIsLoading(false);
   };
 
-  const unsaveRecipe = async (recipeID: string) => {
+  const unsaveRecipe = async (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>,
+    recipeID: string
+  ) => {
+    e.preventDefault();
     setIsLoading(true);
     try {
       const unsaveResponse = await axios.patch(
@@ -114,14 +122,14 @@ const SaveRecipeButton = ({
               <FontAwesomeIcon
                 icon={saved}
                 className={style.savedRecipe}
-                onClick={() => unsaveRecipe(recipeId)}
+                onClick={(e) => unsaveRecipe(e, recipeId)}
               />
             )}
           </button>
         ) : (
           <button
             disabled={isLoading}
-            onClick={() => saveRecipe(recipeId)}
+            onClick={(e) => saveRecipe(e, recipeId)}
             onMouseEnter={() => setIsHover(saved)}
             onMouseLeave={() => setIsHover(unsaved)}
           >

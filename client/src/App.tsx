@@ -1,14 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Navbar from "./components/Navbar/Navbar";
-import CreateRecipe from "./pages/Create-recipe";
 import PrivateRoutes from "./utilis/PrivateRoutes";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
-import SavedRecipes from "./pages/Saved-recipes";
-import SingleRecipe from "./pages/SingleRecipe";
+import SingleRecipe from "./pages/Single-recipe";
 import { useEffect } from "react";
 import Register from "./pages/Register";
+import CreateRecipe from "./pages/create-recipe";
+import Home from "./pages/Home";
+import SavedRecipes from "./pages/saved-recipes";
 
 const App = () => {
   useEffect(() => {

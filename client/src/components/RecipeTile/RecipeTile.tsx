@@ -2,8 +2,8 @@ import { faClock } from "@fortawesome/free-regular-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./RecipeTile.module.scss";
-import { RecipeProps } from "../../pages/Home";
 import { Link } from "react-router-dom";
+import { RecipeProps } from "../../pages/home";
 
 const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   return (

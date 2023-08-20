@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { RecipeProps } from "../../pages/Home";
 import Container from "../Container/Container";
 import style from "./SingleRecipeTile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
+import { RecipeProps } from "../../pages/home";
 
 const SingleRecipeTile = () => {
   const params = useParams();
@@ -16,7 +16,7 @@ const SingleRecipeTile = () => {
     const fetchRecipe = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipes/${params.recipeID}`
+          `http://localhost:3001/recipes/single-recipe/${params.recipeID}`
         );
         setRecipe(response.data);
       } catch (err) {
