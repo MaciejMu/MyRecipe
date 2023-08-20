@@ -4,8 +4,25 @@ import { Request, Response } from "express";
 
 export const getAllRecipes = async (req: Request, res: Response) => {
   try {
-    const response = await RecipeModel.find();
-    res.json(response);
+    const queryObj = { ...req.query };
+    const excludedFields = ["page", "sort", "limit", "fields"];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    let query = RecipeModel.find(queryObj);
+
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 12;
+    const skip = (page - 1) * limit;
+
+    query = query.skip(skip).limit(limit);
+
+    const response = await query;
+
+    const numOfRecipes = response.length;
+
+    if (skip > numOfRecipes) throw new Error("This page does't exist!");
+
+    res.json({ numOfRecipes, recipes: response });
   } catch (err) {
     res.json(err);
   }
@@ -14,6 +31,18 @@ export const getAllRecipes = async (req: Request, res: Response) => {
 export const getSingleRecipe = async (req: Request, res: Response) => {
   try {
     const response = await RecipeModel.findById(req.params.recipeID);
+    res.json(response);
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+export const getRecipesByCategory = async (req: Request, res: Response) => {
+  try {
+    const category = req.params.category;
+    const response = await RecipeModel.aggregate([
+      { $match: { category: category } },
+    ]);
     res.json(response);
   } catch (err) {
     res.json(err);

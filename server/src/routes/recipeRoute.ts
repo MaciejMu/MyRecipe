@@ -6,6 +6,7 @@ import {
   addtoSavedRecipes,
   getAllRecipes,
   getIdOfSavedRecipes,
+  getRecipesByCategory,
   getSavedRecipes,
   getSingleRecipe,
   subtractLikesCounter,
@@ -16,7 +17,8 @@ const router = express.Router();
 
 router
   .get("/", getAllRecipes)
-  .get("/:recipeID", getSingleRecipe)
+  .get("/single-recipe/:recipeID", getSingleRecipe)
+  // .get("/:category", getRecipesByCategory)
   .post("/", verifyToken, addNewRecipe)
   .patch("/unsave", verifyToken, unsaveRecipe)
   .put("/save", verifyToken, addtoSavedRecipes)
