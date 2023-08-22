@@ -8,7 +8,7 @@
     cursor: pointer;
     font-size: 20px;
     padding: 5px;
-    width: 20px;
+    min-width: 20px;
     height: 20px;
     display: flex;
     justify-content: center;
@@ -35,4 +35,5 @@
   background: black;
   color: white;
   box-shadow: 0 0 0 2px black;
+  pointer-events: none;
 }

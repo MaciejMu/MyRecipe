@@ -6,6 +6,7 @@ import style from "./RecipesTilesGrid.module.scss";
 
 import { useSearchParams } from "react-router-dom";
 import PaginationContainer from "../PaginationContainer/PaginationContainer";
+import CategoryFilter from "../CategoryFilter/CategoryFilter";
 
 const RecipesTilesGrid = () => {
   const [recipes, setRecipes] = useState<RecipeProps[]>([]);
@@ -36,6 +37,7 @@ const RecipesTilesGrid = () => {
 
   return (
     <>
+      <CategoryFilter />
       <ul className={style.container}>
         {recipes.map((recipe) => (
           <li key={recipe._id}>

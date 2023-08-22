@@ -8,12 +8,22 @@ const PaginationContainer = ({ numOfRecipes }: { numOfRecipes: number }) => {
   const limitParam = parseInt(searchParams.get("limit") as string);
   const limit = limitParam ? limitParam : numOfRecipes > 8 ? 8 : numOfRecipes;
   const page = parseInt(searchParams.get("page") as string) || 1;
-  //   const category = searchParams.get("category") || "";
+  const category = searchParams.get("category") || null;
 
   return (
     <div className={style.container}>
-      <LimitControlers limit={limit} page={page} numOfRecipes={numOfRecipes} />
-      <Pagination limit={limit} page={page} numOfRecipes={numOfRecipes} />
+      <LimitControlers
+        limit={limit}
+        page={page}
+        numOfRecipes={numOfRecipes}
+        category={category}
+      />
+      <Pagination
+        limit={limit}
+        page={page}
+        numOfRecipes={numOfRecipes}
+        category={category}
+      />
     </div>
   );
 };

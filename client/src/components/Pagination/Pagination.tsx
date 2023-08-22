@@ -10,17 +10,20 @@ const Pagination = ({
   limit,
   page,
   numOfRecipes,
+  category,
 }: {
   limit: number;
   page: number;
   numOfRecipes: number;
+  category: string | null;
 }) => {
   const nextPage = page + 1;
   const prevPage = page - 1;
   const maxPage = Math.ceil(numOfRecipes / limit);
 
   const createLink = (page: number) => {
-    return `/?page=${page}&limit=${limit}`;
+    if (category) return `/?page=${page}&limit=${limit}&category=${category}`;
+    else return `/?page=${page}&limit=${limit}`;
   };
 
   return maxPage > 1 ? (
@@ -37,7 +40,6 @@ const Pagination = ({
         {page}
       </Link>
       {nextPage <= maxPage && <Link to={createLink(nextPage)}>{nextPage}</Link>}
-      {maxPage >= 3 ? <Link to={createLink(3)}>3</Link> : null}
       {maxPage >= 3 ? (
         <>
           <p>...</p>

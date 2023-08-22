@@ -4,29 +4,32 @@ const LimitControlers = ({
   limit,
   page,
   numOfRecipes,
+  category,
 }: {
   limit: number;
   page: number;
   numOfRecipes: number;
+  category: string | null;
 }) => {
   const showMore = limit + 4;
   const showLess = limit - 4;
 
-  const createLink = (page: number, limit: number) => {
-    return `/?page=${page}&limit=${limit}`;
+  const createLink = (limit: number) => {
+    if (category) return `/?page=${page}&limit=${limit}&category=${category}`;
+    else return `/?page=${page}&limit=${limit}`;
   };
 
   return (
     <>
       {limit < numOfRecipes && page === 1 ? (
         <LimitButton
-          linkPath={createLink(page, showMore)}
+          linkPath={createLink(showMore)}
           buttonLabel={"Show more"}
         />
       ) : null}
       {showLess > 4 && page === 1 ? (
         <LimitButton
-          linkPath={`/?page=${page}&limit=${showLess}`}
+          linkPath={createLink(showLess)}
           buttonLabel={"Show less"}
           arrowsUp
         ></LimitButton>
