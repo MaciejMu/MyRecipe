@@ -9,16 +9,15 @@ export const getAllRecipes = async (req: Request, res: Response) => {
     excludedFields.forEach((el) => delete queryObj[el]);
 
     let query = RecipeModel.find(queryObj);
+    const numOfRecipes = await RecipeModel.countDocuments(queryObj);
 
     const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 12;
+    const limit = parseInt(req.query.limit as string) || 8;
     const skip = (page - 1) * limit;
 
     query = query.skip(skip).limit(limit);
 
     const response = await query;
-
-    const numOfRecipes = response.length;
 
     if (skip > numOfRecipes) throw new Error("This page does't exist!");
 

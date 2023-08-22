@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { RecipeProps } from "../../pages/home";
 import RecipeTile from "../RecipeTile/RecipeTile";
 import style from "./RecipesTilesGrid.module.scss";
-import Pagination from "../Pagination/Pagination";
+
 import { useSearchParams } from "react-router-dom";
+import PaginationContainer from "../PaginationContainer/PaginationContainer";
 
 const RecipesTilesGrid = () => {
   const [recipes, setRecipes] = useState<RecipeProps[]>([]);
@@ -16,7 +17,7 @@ const RecipesTilesGrid = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/recipes", {
+        const response = await axios.get(`http://localhost:3001/recipes/`, {
           params: {
             category: searchParams.get("category"),
             page: searchParams.get("page"),
@@ -31,7 +32,7 @@ const RecipesTilesGrid = () => {
     };
 
     fetchRecipe();
-  }, []);
+  }, [searchParams]);
 
   return (
     <>
@@ -42,7 +43,7 @@ const RecipesTilesGrid = () => {
           </li>
         ))}
       </ul>
-      <Pagination numOfRecipes={numOfRecipes} />
+      <PaginationContainer numOfRecipes={numOfRecipes} />
     </>
   );
 };

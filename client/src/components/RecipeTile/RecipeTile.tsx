@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import style from "./RecipeTile.module.scss";
 import { Link } from "react-router-dom";
 import { RecipeProps } from "../../pages/home";
+import { useState } from "react";
 
 const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
+  const [img, setImg] = useState(recipe.imageUrl);
   return (
     <Link to={`/${recipe._id}`}>
       <div className={style.tile}>
@@ -20,8 +22,9 @@ const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
           </b>
         </div>
         <img
-          src={recipe.imageUrl}
+          src={img}
           alt={recipe.name}
+          onError={() => setImg("https://placehold.co/300x200")}
           className={style.recipeImage}
         />
       </div>

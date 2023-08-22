@@ -19,6 +19,7 @@ const CreateRecipeForm = () => {
     cookingTime: 0,
     creator: userID,
     likesCounter: 0,
+    category: "",
   });
 
   const navigate = useNavigate();
@@ -65,7 +66,10 @@ const CreateRecipeForm = () => {
   };
 
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    e:
+      | ChangeEvent<HTMLInputElement>
+      | ChangeEvent<HTMLTextAreaElement>
+      | ChangeEvent<HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setRecipe({ ...recipe, [name]: value });
@@ -93,6 +97,26 @@ const CreateRecipeForm = () => {
             value={recipe.description}
             onChange={handleChange}
           ></textarea>
+          <label htmlFor="caterories">Category:</label>
+          <select
+            required
+            id="categories"
+            name="category"
+            value={recipe.category}
+            onChange={handleChange}
+          >
+            <option value="" disabled></option>
+            <option value="Breakfast-and-Brunch">Breakfast and Brunch</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Healty">Healty</option>
+            <option value="Appetizers-and-Snacks">Appetizers and Snacks</option>
+            <option value="Salad">Salad</option>
+            <option value="Side-Dishes">Side Dishes</option>
+            <option value="Soup">Soup</option>
+            <option value="Bread">Bread</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Desserts">Desserts</option>
+          </select>
           <label htmlFor="ingredients">Ingredients</label>
           {recipe.ingredients.map((ingredient, index) => (
             <input
