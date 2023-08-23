@@ -13,3 +13,8 @@
     text-decoration: underline;
   }
 }
+
+.current {
+  text-decoration: underline;
+  pointer-events: none;
+}
