@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <Container>
-      <h1>All Recipes</h1>
+      <h1>Recipes</h1>
       <RecipesTilesGrid />
     </Container>
   );

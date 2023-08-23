@@ -10,7 +10,7 @@ const PaginationContainer = ({ numOfRecipes }: { numOfRecipes: number }) => {
   const page = parseInt(searchParams.get("page") as string) || 1;
   const category = searchParams.get("category") || null;
 
-  return (
+  return numOfRecipes > 8 ? (
     <div className={style.container}>
       <LimitControlers
         limit={limit}
@@ -25,7 +25,7 @@ const PaginationContainer = ({ numOfRecipes }: { numOfRecipes: number }) => {
         category={category}
       />
     </div>
-  );
+  ) : null;
 };
 
 export default PaginationContainer;

@@ -36,18 +36,6 @@ export const getSingleRecipe = async (req: Request, res: Response) => {
   }
 };
 
-export const getRecipesByCategory = async (req: Request, res: Response) => {
-  try {
-    const category = req.params.category;
-    const response = await RecipeModel.aggregate([
-      { $match: { category: category } },
-    ]);
-    res.json(response);
-  } catch (err) {
-    res.json(err);
-  }
-};
-
 export const addNewRecipe = async (req: Request, res: Response) => {
   const recipe = new RecipeModel(req.body);
   try {

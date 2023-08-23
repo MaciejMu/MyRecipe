@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { RecipeProps } from "../../pages/home";
 import RecipeTile from "../RecipeTile/RecipeTile";
-import style from "./RecipesTilesGrid.module.scss";
-
 import { useSearchParams } from "react-router-dom";
 import PaginationContainer from "../PaginationContainer/PaginationContainer";
 import CategoryFilter from "../CategoryFilter/CategoryFilter";
+import { RecipeProps } from "../../pages/Home";
+import style from "./RecipesTilesGrid.module.scss";
 
 const RecipesTilesGrid = () => {
   const [recipes, setRecipes] = useState<RecipeProps[]>([]);

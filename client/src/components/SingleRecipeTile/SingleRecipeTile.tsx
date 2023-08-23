@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Container from "../Container/Container";
-import style from "./SingleRecipeTile.module.scss";
+// import Container from "../Container/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
-import { RecipeProps } from "../../pages/home";
+import { RecipeProps } from "../../pages/Home";
+import style from "./SingleRecipeTile.module.scss";
 
 const SingleRecipeTile = () => {
   const params = useParams();
@@ -20,7 +20,6 @@ const SingleRecipeTile = () => {
         );
         setRecipe(response.data);
       } catch (err) {
-        ``;
         console.log(err);
       }
     };
@@ -32,7 +31,7 @@ const SingleRecipeTile = () => {
   }, [recipe?.name]);
 
   return (
-    <Container>
+    <>
       {recipe ? (
         <section className={style.section}>
           <div className={style.topContainer}>
@@ -68,7 +67,7 @@ const SingleRecipeTile = () => {
       ) : (
         <h2>Something went wong...</h2>
       )}
-    </Container>
+    </>
   );
 };
 
