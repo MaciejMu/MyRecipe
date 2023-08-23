@@ -30,7 +30,6 @@ const RecipesTilesGrid = () => {
         console.log(err);
       }
     };
-
     fetchRecipe();
   }, [searchParams]);
 

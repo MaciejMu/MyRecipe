@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
-import { RecipeProps } from "../../pages/Home";
 import style from "./SingleRecipeTile.module.scss";
+import { RecipeProps } from "../../pages/Home";
 
 const SingleRecipeTile = () => {
   const params = useParams();
