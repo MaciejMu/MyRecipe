@@ -15,7 +15,7 @@ export const getAllRecipes = async (req: Request, res: Response) => {
     const limit = parseInt(req.query.limit as string) || 8;
     const skip = (page - 1) * limit;
 
-    query = query.skip(skip).limit(limit);
+    query = query.skip(skip).limit(limit).sort({ likesCounter: -1 });
 
     const response = await query;
 
@@ -119,6 +119,15 @@ export const getSavedRecipes = async (req: Request, res: Response) => {
       _id: { $in: user?.savedRecipes },
     });
     res.status(201).json({ savedRecipes });
+  } catch (err) {
+    res.json(err);
+  }
+};
+
+export const getQuickandFast = async (req: Request, res: Response) => {
+  try {
+    const response = await RecipeModel.find({ cookingTime: { $lte: 30 } });
+    res.status(201).json(response);
   } catch (err) {
     res.json(err);
   }
