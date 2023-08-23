@@ -39,6 +39,24 @@ const RecipeSchema = new mongoose.Schema({
     require: true,
     default: 0,
   },
+  category: {
+    type: String,
+    // "QUICK AND EASY DINNERS FOR ONE" ||
+    // "COOKING FOR TWO" ||
+    // "SHEET PAN DINNERS" ||
+    // "SLOW COOKER" ||
+    // "VEGETARIAN" ||
+    // "HEALTHY" ||
+    // "MEATLOAF" ||
+    // "PASTA" ||
+    // "MAIN DISHES" ||
+    // "PORK CHOPS" ||
+    // "SALADS" ||
+    // "BEEF STEAKS" ||
+    // "BAKED AND ROASTED CHICKEN" ||
+    // "SIDE DISHES",
+    require: true,
+  },
 });
 
 export const RecipeModel = mongoose.model("recipes", RecipeSchema);

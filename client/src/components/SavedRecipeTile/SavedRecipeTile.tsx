@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { RecipeProps } from "../../pages/Home";
 import style from "./SavedRecipeTile.module.scss";
+import { RecipeProps } from "../../pages/Home";
 
 const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   return (

@@ -16,7 +16,7 @@ const router = express.Router();
 
 router
   .get("/", getAllRecipes)
-  .get("/:recipeID", getSingleRecipe)
+  .get("/single-recipe/:recipeID", getSingleRecipe)
   .post("/", verifyToken, addNewRecipe)
   .patch("/unsave", verifyToken, unsaveRecipe)
   .put("/save", verifyToken, addtoSavedRecipes)
