@@ -40,7 +40,7 @@ const Pagination = ({
         {page}
       </Link>
       {nextPage <= maxPage && <Link to={createLink(nextPage)}>{nextPage}</Link>}
-      {maxPage >= 3 ? (
+      {maxPage >= 4 && nextPage !== maxPage ? (
         <>
           <p>...</p>
           <Link to={createLink(maxPage)}>{maxPage}</Link>

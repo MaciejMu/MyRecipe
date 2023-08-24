@@ -18,6 +18,7 @@ const cartegories = [
 const CategoryFilter = () => {
   const [searchParams] = useSearchParams();
   const currentCategory = searchParams.get("category");
+
   const createLink = (category: string) => {
     return (
       <Link
@@ -30,15 +31,19 @@ const CategoryFilter = () => {
   };
 
   return (
-    <section className={style.container}>
-      <Link
-        to={`/?page=1&limit=8`}
-        className={clsx(!currentCategory && style.current)}
-      >
-        All
-      </Link>
-      {cartegories.map((category) => createLink(category))}
-    </section>
+    <ul className={style.section}>
+      <li>
+        <Link
+          to={`/?page=1&limit=8`}
+          className={clsx(!currentCategory && style.current)}
+        >
+          All
+        </Link>
+      </li>
+      {cartegories.map((category, i) => (
+        <li key={i}>{createLink(category)}</li>
+      ))}
+    </ul>
   );
 };
 
