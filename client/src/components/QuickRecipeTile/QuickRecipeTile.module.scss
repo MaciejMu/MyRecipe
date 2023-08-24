@@ -1,0 +1,82 @@
+.section {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px;
+  }
+
+  .ingredientsList {
+    max-width: 80%;
+    width: 100%;
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+
+    li {
+      list-style: circle;
+      max-width: 200px;
+    }
+  }
+
+  p {
+    text-align: start;
+    margin: 0;
+    font-family: "Tilt Prism", cursive;
+    font-size: 120px;
+    min-width: 200px;
+    height: 100%;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+
+  img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+  }
+
+  span {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  a {
+    align-self: flex-end;
+
+    &:hover {
+      color: orange;
+      svg {
+        transform: translateX(0%);
+        transition: all 0.3s ease-in-out;
+        opacity: 100;
+      }
+    }
+
+    svg {
+      transform: translateX(-100%);
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+    }
+  }
+
+  .ingredientsList.active {
+    transition: max-height 0.3s ease-in-out;
+    max-height: 400px;
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  align-self: center;
+  padding: 10px;
+  font-size: 30px;
+}

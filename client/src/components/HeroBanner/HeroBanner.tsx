@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import style from "./Banner.module.scss";
+import style from "./HeroBanner.module.scss";
 
-const Banner = ({
+const HeroBanner = ({
   img,
   title,
   description,
@@ -25,4 +25,4 @@ const Banner = ({
   );
 };
 
-export default Banner;
+export default HeroBanner;

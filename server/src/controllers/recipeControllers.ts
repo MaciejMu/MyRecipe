@@ -15,7 +15,13 @@ export const getAllRecipes = async (req: Request, res: Response) => {
     const limit = parseInt(req.query.limit as string) || 8;
     const skip = (page - 1) * limit;
 
-    query = query.skip(skip).limit(limit).sort({ likesCounter: -1 });
+    query = query
+      .sort({
+        createdAt: -1,
+        likesCounter: -1,
+      })
+      .skip(skip)
+      .limit(limit);
 
     const response = await query;
 
@@ -126,7 +132,10 @@ export const getSavedRecipes = async (req: Request, res: Response) => {
 
 export const getQuickandFast = async (req: Request, res: Response) => {
   try {
-    const response = await RecipeModel.find({ cookingTime: { $lte: 30 } });
+    const response = await RecipeModel.find({
+      cookingTime: { $lte: 30 },
+      category: { $ne: "Drinks" },
+    }).sort({ likesCounter: -1 });
     res.status(201).json(response);
   } catch (err) {
     res.json(err);

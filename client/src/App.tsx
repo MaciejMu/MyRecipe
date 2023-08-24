@@ -8,8 +8,8 @@ import { useEffect } from "react";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import CreateRecipe from "./pages/Create-recipe";
-import SavedRecipes from "./pages/saved-recipes";
-import FeaturedRecipes from "./pages/FeaturedRecipes";
+import SavedRecipes from "./pages/Saved-recipes";
+import FastAndQuickRecipes from "./pages/Quick&FastRecipes";
 
 const App = () => {
   useEffect(() => {
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/:recipeID" element={<SingleRecipe />}></Route>
-        <Route path="/Quick-&-Fast" element={<FeaturedRecipes />}></Route>
+        <Route path="/Quick-&-Fast" element={<FastAndQuickRecipes />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,5 @@
 import LimitButton from "../LimitButton/LimitButton";
+import style from "./LimitControlers.module.scss";
 
 const LimitControlers = ({
   limit,
@@ -20,13 +21,7 @@ const LimitControlers = ({
   };
 
   return (
-    <>
-      {limit < numOfRecipes && page === 1 ? (
-        <LimitButton
-          linkPath={createLink(showMore)}
-          buttonLabel={"Show more"}
-        />
-      ) : null}
+    <section className={style.section}>
       {showLess > 4 && page === 1 ? (
         <LimitButton
           linkPath={createLink(showLess)}
@@ -34,7 +29,13 @@ const LimitControlers = ({
           arrowsUp
         ></LimitButton>
       ) : null}
-    </>
+      {limit < numOfRecipes && page === 1 ? (
+        <LimitButton
+          linkPath={createLink(showMore)}
+          buttonLabel={"Show more"}
+        />
+      ) : null}
+    </section>
   );
 };
 
