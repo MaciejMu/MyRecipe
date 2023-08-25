@@ -108,6 +108,7 @@ const CreateRecipeForm = () => {
             <option value="" disabled></option>
             <option value="Breakfast-and-Brunch">Breakfast and Brunch</option>
             <option value="Lunch">Lunch</option>
+            <option value="Main Dishes">Main Dishes</option>
             <option value="Healty">Healty</option>
             <option value="Appetizers-and-Snacks">Appetizers and Snacks</option>
             <option value="Salad">Salad</option>

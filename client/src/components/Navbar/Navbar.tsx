@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={style.navbar}>
+    <header className={style.navbar}>
       <div className={style.container}>
         <Link to={"/"}>
           <h1>
@@ -37,7 +37,7 @@ const Navbar = () => {
             </span>
           </Link>
         ) : (
-          <div className={style.userNavigate}>
+          <nav className={style.userNavigate}>
             <span>
               <b>
                 <UserName />
@@ -51,10 +51,10 @@ const Navbar = () => {
                 Logout
               </Link>
             </div>
-          </div>
+          </nav>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 
