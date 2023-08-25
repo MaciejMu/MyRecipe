@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import getUserID from "../hooks/getUserId";
 import Container from "../components/Container/Container";
 import SavedRecipeTile from "../components/SavedRecipeTile/SavedRecipeTile";
-import { RecipeProps } from "./home";
+import { RecipeProps } from "./Home";
 
 const SavedRecipes = () => {
   const userID = getUserID();

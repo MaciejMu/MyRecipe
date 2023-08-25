@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import Container from "../components/Container/Container";
 import RecipesTilesGrid from "../components/RecipesTilesGrid/RecipesTilesGrid";
+import NewsletterBanner from "../components/NewsletterBanner/NewsletterBanner";
 
+<NewsletterBanner />;
 export type RecipeProps = {
   _id: string;
   name: string;
@@ -21,10 +23,13 @@ const Home = () => {
   }, []);
 
   return (
-    <Container>
-      <h1>Recipes</h1>
-      <RecipesTilesGrid />
-    </Container>
+    <>
+      <Container>
+        <h1>Recipes</h1>
+        <RecipesTilesGrid />
+      </Container>
+      <NewsletterBanner />
+    </>
   );
 };
 

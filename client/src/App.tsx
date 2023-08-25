@@ -6,9 +6,9 @@ import Login from "./pages/Login";
 import SingleRecipe from "./pages/Single-recipe";
 import { useEffect } from "react";
 import Register from "./pages/Register";
-import CreateRecipe from "./pages/create-recipe";
 import Home from "./pages/Home";
 import SavedRecipes from "./pages/saved-recipes";
+import CreateRecipe from "./pages/Create-recipe";
 
 const App = () => {
   useEffect(() => {
