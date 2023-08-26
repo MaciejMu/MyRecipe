@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { RecipeProps } from "../../pages/Home";
 import style from "./RecipeTile.module.scss";
+import CustomImage from "../CustomImage/CustomImage";
 
 const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
-  const [img, setImg] = useState(recipe.imageUrl);
   const [isHover, setIsHover] = useState(false);
 
   const recipeName = (recipeName: string) => {
@@ -33,10 +33,9 @@ const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
           {recipe.cookingTime}min
         </b>
       </div>
-      <img
-        src={img}
+      <CustomImage
+        src={recipe.imageUrl}
         alt={recipe.name}
-        onError={() => setImg("https://placehold.co/300x200")}
         className={style.recipeImage}
       />
     </Link>

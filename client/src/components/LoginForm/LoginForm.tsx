@@ -34,7 +34,7 @@ const Login = () => {
   };
 
   return (
-    <div className={style.container}>
+    <section className={style.section}>
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <div className="form-group">
@@ -69,7 +69,7 @@ const Login = () => {
         <p>Don't have an account?</p>
         <Link to="/register">Join now</Link>
       </span>
-    </div>
+    </section>
   );
 };
 export default Login;

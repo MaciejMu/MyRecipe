@@ -3,8 +3,10 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import getUserId from "../../hooks/getUserId";
 import { useCookies } from "react-cookie";
-import Button from "../Button/Button";
 import style from "./CreateRecipeForm.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faX } from "@fortawesome/free-solid-svg-icons";
+import ChevronsButton from "../ChevronsButton/ChevronsButton";
 
 const CreateRecipeForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -75,6 +77,19 @@ const CreateRecipeForm = () => {
     setRecipe({ ...recipe, [name]: value });
   };
 
+  const deleteInput = (
+    index: number,
+    inputsName: "instructions" | "ingredients"
+  ) => {
+    if (inputsName === "instructions") {
+      recipe.instructions.splice(index, 1);
+      setRecipe({ ...recipe, instructions: recipe.instructions });
+    } else if (inputsName === "ingredients") {
+      recipe.ingredients.splice(index, 1);
+      setRecipe({ ...recipe, ingredients: recipe.ingredients });
+    }
+  };
+
   return (
     <>
       <h1>Create Recipe</h1>
@@ -120,32 +135,61 @@ const CreateRecipeForm = () => {
           </select>
           <label htmlFor="ingredients">Ingredients</label>
           {recipe.ingredients.map((ingredient, index) => (
-            <input
-              required
-              key={index}
-              type="text"
-              name="ingredients"
-              value={ingredient}
-              onChange={(event) => handleIngredientChange(event, index)}
-            />
+            <div className={style.inputsListItem} key={index}>
+              <input
+                required
+                key={index}
+                type="text"
+                name="ingredients"
+                value={ingredient}
+                onChange={(event) => handleIngredientChange(event, index)}
+              />
+
+              <button
+                type="button"
+                className={style.deleteButton}
+                onClick={() => deleteInput(index, "ingredients")}
+                disabled={index <= 0}
+              >
+                <FontAwesomeIcon icon={faX} />
+              </button>
+            </div>
           ))}
-          <Button type="button" onClick={handleAddIngredient}>
-            ▼ Add Ingredient
-          </Button>
+          <ChevronsButton
+            onClick={handleAddIngredient}
+            arrowsDown
+            type={"button"}
+          >
+            Add Ingredient
+          </ChevronsButton>
           <label htmlFor="instructions">Instructions</label>
           {recipe.instructions.map((instruction, index) => (
-            <input
-              required
-              key={index}
-              type="text"
-              name="instructions"
-              value={instruction}
-              onChange={(event) => handleInstructionChange(event, index)}
-            />
+            <div className={style.inputsListItem} key={index}>
+              <input
+                required
+                type="text"
+                name="instructions"
+                value={instruction}
+                onChange={(event) => handleInstructionChange(event, index)}
+              />
+
+              <button
+                type="button"
+                className={style.deleteButton}
+                onClick={() => deleteInput(index, "instructions")}
+                disabled={index <= 0}
+              >
+                <FontAwesomeIcon icon={faX} />
+              </button>
+            </div>
           ))}
-          <Button type="button" onClick={handleAddInstruction}>
-            ▼ Add Instruction
-          </Button>
+          <ChevronsButton
+            onClick={handleAddInstruction}
+            arrowsDown
+            type={"button"}
+          >
+            Add Instruction
+          </ChevronsButton>
           <label htmlFor="imageUrl">Image URL</label>
           <input
             required
@@ -166,7 +210,12 @@ const CreateRecipeForm = () => {
             value={recipe.cookingTime}
             onChange={handleChange}
           />
-          <Button type="submit">✚ Create Recipe</Button>
+          <ChevronsButton type="submit">
+            <span>
+              <FontAwesomeIcon icon={faPlus} />
+            </span>
+            Create Recipe
+          </ChevronsButton>
         </form>
       </div>
     </>

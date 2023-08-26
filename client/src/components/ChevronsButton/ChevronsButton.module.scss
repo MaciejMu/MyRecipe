@@ -4,15 +4,20 @@
   gap: 10px;
   border: 2px solid black;
   background: none;
-  color: black;
+  color: white;
   cursor: pointer;
   padding: 10px 20px;
   transition: all 0.3s ease-in-out;
   width: 100%;
+  background: black;
 
   &:hover {
-    background: black;
     transition: all 0.3s ease-in-out;
-    color: white;
+    background: white;
+    color: black;
+  }
+
+  svg {
+    color: orange;
   }
 }

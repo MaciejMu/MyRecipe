@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import style from "./SavedRecipeTile.module.scss";
 import { RecipeProps } from "../../pages/Home";
+import CustomImage from "../CustomImage/CustomImage";
 
 const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   return (
@@ -13,7 +14,7 @@ const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
           </span>
           <p>Cooking Time: {recipe.cookingTime} minutes</p>
         </div>
-        <img src={recipe.imageUrl} alt={recipe.name} />
+        <CustomImage src={recipe.imageUrl} alt={recipe.name} />
       </Link>
     </li>
   );

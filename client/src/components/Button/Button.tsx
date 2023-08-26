@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import style from "./Button.module.scss";
 
 const Button = ({
@@ -6,7 +7,7 @@ const Button = ({
   onClick,
   disabled,
 }: {
-  children: string;
+  children: ReactNode;
   type: "button" | "submit" | "reset" | undefined;
   onClick?: () => void;
   disabled?: boolean;

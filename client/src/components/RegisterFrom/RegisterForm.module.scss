@@ -1,4 +1,4 @@
-.container {
+.section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,6 +26,7 @@
   a {
     color: black;
     text-decoration: underline;
+    text-decoration-color: orange;
     padding-bottom: 20px;
 
     &:hover {
@@ -36,5 +37,9 @@
   p {
     font-size: 14px;
     margin: 30px 0 0;
+  }
+
+  span {
+    text-align: center;
   }
 }

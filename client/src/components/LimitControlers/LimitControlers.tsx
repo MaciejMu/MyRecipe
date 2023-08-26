@@ -1,4 +1,5 @@
-import LimitButton from "../LimitButton/LimitButton";
+import { Link } from "react-router-dom";
+import ChevronsButton from "../ChevronsButton/ChevronsButton";
 import style from "./LimitControlers.module.scss";
 
 const LimitControlers = ({
@@ -23,17 +24,14 @@ const LimitControlers = ({
   return (
     <section className={style.section}>
       {showLess > 4 && page === 1 ? (
-        <LimitButton
-          linkPath={createLink(showLess)}
-          buttonLabel={"Show less"}
-          arrowsUp
-        ></LimitButton>
+        <Link to={createLink(showLess)}>
+          <ChevronsButton arrowsUp>Show less</ChevronsButton>
+        </Link>
       ) : null}
       {limit < numOfRecipes && page === 1 ? (
-        <LimitButton
-          linkPath={createLink(showMore)}
-          buttonLabel={"Show more"}
-        />
+        <Link to={createLink(showMore)}>
+          <ChevronsButton arrowsDown>Show more</ChevronsButton>
+        </Link>
       ) : null}
     </section>
   );

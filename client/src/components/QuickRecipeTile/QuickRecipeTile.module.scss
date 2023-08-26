@@ -22,6 +22,12 @@
     max-width: 400px;
     width: 100%;
     justify-content: center;
+
+    &:hover {
+      h4 {
+        text-shadow: -5px 5px 6px orange;
+      }
+    }
   }
 
   ul {
@@ -30,7 +36,7 @@
     display: grid;
     justify-items: center;
     margin: 0 auto;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
@@ -62,6 +68,7 @@
     object-fit: cover;
     width: 300px;
     height: 300px;
+    border: 2px solid black;
   }
 
   a {
@@ -75,6 +82,7 @@
 
     &:hover {
       color: orange;
+
       svg {
         transform: translateX(0%);
         transition: all 0.3s ease-in-out;
@@ -92,6 +100,7 @@
   ul.active {
     transition: max-height 0.3s ease-in-out;
     max-height: 400px;
+    padding-top: 20px;
   }
 }
 

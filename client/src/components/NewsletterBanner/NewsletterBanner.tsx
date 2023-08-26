@@ -11,12 +11,14 @@ const NewsletterBanner = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    // send mail
+    setMail("");
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
-    // send mail
-    setMail("");
-    setIsSend(true);
+    setTimeout(() => {
+      setIsSend(true);
+    }, 1000);
     setTimeout(() => {
       setIsSend(false);
     }, 8000);

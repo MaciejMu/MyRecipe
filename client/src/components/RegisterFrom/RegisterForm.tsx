@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import style from "./RegisterForm.module.scss";
 import Button from "../Button/Button";
@@ -28,7 +28,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className={style.container}>
+    <section className={style.section}>
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
         <div className="form-group">
@@ -60,7 +60,11 @@ const RegisterForm = () => {
           </Button>
         )}
       </form>
-    </div>
+      <span>
+        <p>Have an account?</p>
+        <Link to="/login">Log in</Link>
+      </span>
+    </section>
   );
 };
 

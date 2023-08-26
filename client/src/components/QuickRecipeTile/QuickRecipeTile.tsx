@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import clsx from "clsx";
+import CustomImage from "../CustomImage/CustomImage";
 
 const QuickRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   const [isActive, setIsActive] = useState(false);
@@ -22,7 +23,7 @@ const QuickRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
       <hr />
       <div>
         <p>{recipe.cookingTime}"</p>
-        <img src={recipe.imageUrl} />
+        <CustomImage src={recipe.imageUrl} alt={recipe.name} />
         <span onClick={handleClick}>
           <h4>{recipe.name}</h4>
           {isActive ? (
