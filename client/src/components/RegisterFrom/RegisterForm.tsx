@@ -31,7 +31,7 @@ const RegisterForm = () => {
     <section className={style.section}>
       <form onSubmit={handleSubmit}>
         <h2>Register</h2>
-        <div className="form-group">
+        <div>
           <label htmlFor="username">Username:</label>
           <input
             required
@@ -42,7 +42,7 @@ const RegisterForm = () => {
             onChange={(event) => setUsername(event.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div>
           <label htmlFor="password">Password:</label>
           <input
             required

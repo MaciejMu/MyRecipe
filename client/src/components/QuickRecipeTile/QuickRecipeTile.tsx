@@ -22,7 +22,7 @@ const QuickRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
     <section className={style.section}>
       <hr />
       <div>
-        <p>{recipe.cookingTime}"</p>
+        <p>{recipe.cookingTime}'</p>
         <CustomImage src={recipe.imageUrl} alt={recipe.name} />
         <span onClick={handleClick}>
           <h4>{recipe.name}</h4>

@@ -1,0 +1,54 @@
+.footer {
+  background: black;
+  color: white;
+
+  .section {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 {
+    color: white;
+    margin-bottom: 0;
+  }
+
+  h4 {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  h5 {
+    margin: 0;
+    text-align: center;
+  }
+
+  ul {
+    padding-bottom: 50px;
+  }
+
+  a {
+    display: flex;
+    color: white;
+    gap: 10px;
+
+    &:hover {
+      color: orange;
+    }
+  }
+
+  span {
+    color: orange;
+  }
+}

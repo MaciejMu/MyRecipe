@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import style from "./Navbar.module.scss";
+import style from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faRightToBracket,
@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import UserName from "../Username/Username";
 
-const Navbar = () => {
+const Header = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
 
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     <header className={style.navbar}>
-      <div className={style.container}>
+      <section className={style.section}>
         <Link to={"/"}>
           <h1>
             <FontAwesomeIcon icon={faWineBottle} />
@@ -53,9 +53,9 @@ const Navbar = () => {
             </div>
           </nav>
         )}
-      </div>
+      </section>
     </header>
   );
 };
 
-export default Navbar;
+export default Header;

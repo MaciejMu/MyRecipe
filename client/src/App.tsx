@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Header/Header";
 import PrivateRoutes from "./utilis/PrivateRoutes";
 import Login from "./pages/Login";
 import SingleRecipe from "./pages/Single-recipe";
@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import CreateRecipe from "./pages/Create-recipe";
 import SavedRecipes from "./pages/Saved-recipes";
 import FastAndQuickRecipes from "./pages/Quick&FastRecipes";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/:recipeID" element={<SingleRecipe />}></Route>
         <Route path="/Quick-&-Fast" element={<FastAndQuickRecipes />}></Route>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
