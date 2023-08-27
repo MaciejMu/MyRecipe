@@ -5,12 +5,33 @@
   .section {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
     width: 100%;
     max-width: 1400px;
     justify-content: space-around;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 0;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 0;
+      gap: 30px;
+
+      div {
+        align-items: center;
+      }
+
+      ul {
+        align-items: center;
+        padding: 0;
+      }
+
+      // h4 {
+      //   margin-bottom: 0;
+      // }
+    }
   }
 
   div {

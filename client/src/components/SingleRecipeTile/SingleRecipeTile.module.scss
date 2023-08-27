@@ -42,15 +42,17 @@
   }
 
   button {
+    display: flex;
     cursor: pointer;
     margin: 50px auto 0;
     font-family: "Tilt Prism", cursive;
     font-size: 30px;
     width: fit-content;
     transition: all 0.3s ease-in-out;
+    gap: 10px;
 
     &:hover {
-      color: rgb(133, 133, 133);
+      color: orange;
       transition: all 0.3s ease-in-out;
     }
   }
