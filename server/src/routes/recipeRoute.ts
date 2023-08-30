@@ -1,5 +1,5 @@
 import express from "express";
-import { verifyToken } from "../controllers/userControllers";
+import { verifyToken } from "../utilis/verifyToken";
 import {
   addLikesCounter,
   addNewRecipe,
