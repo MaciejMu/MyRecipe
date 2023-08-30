@@ -1,11 +1,10 @@
 import express from "express";
-import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv";
 import { userRouter } from "./routes/usersRoute";
 import { recipesRouter } from "./routes/recipeRoute";
+import createAppError from "./utilis/appError";
+import errorHandlerController from "./controllers/errorController";
 
-dotenv.config({ path: "./.env" });
 const app = express();
 
 app.use(express.json());
@@ -14,12 +13,10 @@ app.use(cors());
 app.use("/user", userRouter);
 app.use("/recipes", recipesRouter);
 
-const DB = process.env.DATABASE || "";
-
-mongoose.connect(DB).then((connnection) => {
-  console.log("Connected to mongodb!");
+app.all("*", (req, res, next) => {
+  next(createAppError(`Cant find ${req.originalUrl} on this server`, 404));
 });
 
-app.listen(3001, () => {
-  console.log("Server running on port 3001");
-});
+app.use(errorHandlerController);
+
+export default app;
