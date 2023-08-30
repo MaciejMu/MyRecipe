@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 import style from "./SingleRecipeTile.module.scss";
-import { RecipeProps } from "../../pages/Home";
 import CustomImage from "../CustomImage/CustomImage";
+import { RecipeProps } from "../../pages/Home";
 
 const SingleRecipeTile = () => {
   const params = useParams();
@@ -51,7 +51,7 @@ const SingleRecipeTile = () => {
           <CustomImage src={recipe.imageUrl} alt={recipe.name} />
           <h3>Ingredients</h3>
           <ul>
-            {recipe.ingredients.map((ingredient, i) => (
+            {recipe?.ingredients.map((ingredient, i) => (
               <li key={i}>{ingredient}</li>
             ))}
           </ul>
@@ -59,7 +59,7 @@ const SingleRecipeTile = () => {
 
           <h3>Directions</h3>
           <ol>
-            {recipe.instructions.map((instruction, i) => (
+            {recipe?.instructions.map((instruction, i) => (
               <li key={i}>{instruction}</li>
             ))}
           </ol>

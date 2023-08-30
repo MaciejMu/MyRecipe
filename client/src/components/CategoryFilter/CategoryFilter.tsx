@@ -5,6 +5,7 @@ import clsx from "clsx";
 const cartegories = [
   "Breakfast-and-Brunch",
   "Lunch",
+  "Main-Dishes",
   "Healty",
   "Appetizers-and-Snacks",
   "Salad",

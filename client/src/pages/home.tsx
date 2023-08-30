@@ -4,7 +4,6 @@ import RecipesTilesGrid from "../components/RecipesTilesGrid/RecipesTilesGrid";
 import HeroBanner from "../components/HeroBanner/HeroBanner";
 import NewsletterBanner from "../components/NewsletterBanner/NewsletterBanner";
 
-<NewsletterBanner />;
 export type RecipeProps = {
   _id: string;
   name: string;
