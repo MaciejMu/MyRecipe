@@ -12,13 +12,15 @@ export const register = async (req: Request, res: Response) => {
   const user = await UserModel.findOne({ username });
 
   if (user) {
-    return res.status(404).json({ message: "User already exists" });
+    return res.status(404).json({ message: "User already exists!" });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const newUser = new UserModel({ username, password: hashedPassword });
-  await newUser.save();
+  // const newUser = new UserModel({ username, password: hashedPassword });
+  // await newUser.save();
+
+  UserModel.create({ username: req.body.username, password: hashedPassword });
 
   res.json({ message: "User created sucessfully!" });
 };
@@ -35,11 +37,11 @@ export const login = async (req: Request, res: Response) => {
     user.password && (await bcrypt.compare(password, user.password));
 
   if (!isPasswordCorrect) {
-    res.json({ message: "Username or Password is incorect" });
-  }
-
-  if (user) {
-    const token = jwt.sign({ id: user._id }, JWTSecret);
+    return res.status(404).json({ message: "Password is incorect" });
+  } else if (user) {
+    const token = jwt.sign({ id: user._id }, JWTSecret, {
+      expiresIn: process.env.JWT_EXPIRES,
+    });
     res.json({ token, userID: user._id });
   }
 };
