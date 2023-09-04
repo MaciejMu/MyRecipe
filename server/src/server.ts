@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import app from "./index";
 
+process.on("uncaughtRejection", (err) => {
+  console.log(err, err.message);
+  process.exit(1);
+});
+
 dotenv.config({ path: "./.env" });
 const DB = process.env.DATABASE || "";
 
