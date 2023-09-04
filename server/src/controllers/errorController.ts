@@ -7,14 +7,13 @@ const handleCastError = (err: unknown | any) => {
 };
 
 const handleDuplicate = (err: unknown | any) => {
-  const value = err.errmsg.match(/(["'])(?:(?=(\\?))\2.)*?\1/)[0];
-  const message = `Duplicate fields value: ${value}, Please use another value!`;
+  const message = `Recipe exist, Please use another value!`;
   return createAppError(message, 400);
 };
 
 const handleValidationError = (err: unknown | any) => {
-  const errors = Object.values(err.errors).map((el) => el.message);
-  console.log(errors);
+  console.log(err);
+  const errors = Object.values(err.errors).map((el: any) => el.message);
   const message = `Invalid data! ${errors.join(". ")}`;
   return createAppError(message, 400);
 };
@@ -25,21 +24,13 @@ const errorHandlerController = (
   res: Response,
   next: NextFunction
 ) => {
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || "error";
-
-  // res.status(err.statusCode).json({
-  //   status: err.status,
-  //   message: err.message,
-  // });
-
   let error = { ...err };
-
+  console.log(error);
   if (error.name === "CastError") error = handleCastError(error);
   if (error.code === 11000) error = handleDuplicate(error);
   if (error.name === "ValidationError") error = handleValidationError(error);
 
-  if (error.isOperitional) {
+  if (error.isOperational) {
     res.status(error.statusCode).json({
       status: error.status,
       message: error.message,
