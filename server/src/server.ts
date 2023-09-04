@@ -9,6 +9,11 @@ mongoose.connect(DB).then((connnection) => {
   console.log("Connected to mongodb!");
 });
 
-app.listen(3001, () => {
+const server = app.listen(3001, () => {
   console.log("Server running on port 3001");
+});
+
+process.on("unhandeledRejection", (err) => {
+  console.log(err, err.message);
+  server.close(() => process.exit(1));
 });
