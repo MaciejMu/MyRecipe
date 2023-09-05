@@ -7,10 +7,12 @@ import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 import style from "./SingleRecipeTile.module.scss";
 import CustomImage from "../CustomImage/CustomImage";
 import { RecipeProps } from "../../types";
+import { ClipLoader } from "react-spinners";
 
 const SingleRecipeTile = () => {
-  const params = useParams();
   const [recipe, setRecipe] = useState<RecipeProps>();
+  const [isError, setIsError] = useState("");
+  const params = useParams();
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -19,8 +21,11 @@ const SingleRecipeTile = () => {
           `http://localhost:3001/recipes/single-recipe/${params.recipeID}`
         );
         setRecipe(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        if (error instanceof Error) {
+          setIsError(error.message);
+          console.log(error);
+        }
       }
     };
     fetchRecipe();
@@ -56,7 +61,6 @@ const SingleRecipeTile = () => {
             ))}
           </ul>
           <hr />
-
           <h3>Directions</h3>
           <ol>
             {recipe?.instructions.map((instruction, i) => (
@@ -64,13 +68,14 @@ const SingleRecipeTile = () => {
             ))}
           </ol>
           <hr />
-
           <button onClick={() => window.print()}>
             <FontAwesomeIcon icon={faPrint} /> Print
           </button>
         </section>
+      ) : isError ? (
+        <h2>{isError}</h2>
       ) : (
-        <h2>Something went wong...</h2>
+        <ClipLoader color="orange" />
       )}
     </>
   );

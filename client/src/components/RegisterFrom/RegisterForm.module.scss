@@ -8,9 +8,13 @@
   border-radius: 5px;
   box-shadow: 0 0 100px orange;
   margin: 20px;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   padding-bottom: 40px;
 
+  @media (max-width: 500px) {
+    max-width: 80%;
+  }
   form {
     display: flex;
     flex-direction: column;

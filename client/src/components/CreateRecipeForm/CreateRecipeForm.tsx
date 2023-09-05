@@ -7,11 +7,14 @@ import style from "./CreateRecipeForm.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faX } from "@fortawesome/free-solid-svg-icons";
 import ChevronsButton from "../ChevronsButton/ChevronsButton";
+import Modal from "../Modal/Modal";
 
 const CreateRecipeForm = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, _] = useCookies();
   const userID = getUserId();
+  const [modalText, setModalText] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [recipe, setRecipe] = useState({
     name: "",
     description: "",
@@ -25,6 +28,14 @@ const CreateRecipeForm = () => {
   });
 
   const navigate = useNavigate();
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   const handleAddIngredient = () => {
     setRecipe({ ...recipe, ingredients: [...recipe.ingredients, ""] });
@@ -60,8 +71,11 @@ const CreateRecipeForm = () => {
       axios.post("http://localhost:3001/recipes", recipe, {
         headers: { authorization: cookies.access_token },
       });
-      alert("Recipe created!");
-      navigate("/");
+      setModalText("Recipe created!");
+      openModal();
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } catch (err) {
       console.log(err);
     }
@@ -92,8 +106,13 @@ const CreateRecipeForm = () => {
 
   return (
     <>
+      <Modal
+        showModal={showModal}
+        closeModal={closeModal}
+        modalText={modalText}
+      />
       <h1>Create Recipe</h1>
-      <div className={style.container}>
+      <section className={style.container}>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>
           <input
@@ -217,7 +236,7 @@ const CreateRecipeForm = () => {
             Create Recipe
           </ChevronsButton>
         </form>
-      </div>
+      </section>
     </>
   );
 };

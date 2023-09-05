@@ -4,11 +4,13 @@ import getUserID from "../hooks/getUserId";
 import Container from "../components/Container/Container";
 import SavedRecipeTile from "../components/SavedRecipeTile/SavedRecipeTile";
 import { RecipeProps } from "../types";
+import { ClipLoader } from "react-spinners";
 
 const SavedRecipes = () => {
   const userID = getUserID();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [savedRecipes, setSavedRecipes] = useState<RecipeProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     document.title = "MyRecipe - Saved Recipes";
@@ -24,6 +26,7 @@ const SavedRecipes = () => {
       } catch (err) {
         console.log(err);
       }
+      setIsLoading(false);
     };
     fetchSavedRecipe();
   }, []);
@@ -31,7 +34,9 @@ const SavedRecipes = () => {
   return (
     <Container>
       <h1>Saved Recipes</h1>
-      {savedRecipes.length > 0 ? (
+      {isLoading ? (
+        <ClipLoader color="orange" />
+      ) : savedRecipes.length > 0 ? (
         <ul>
           {savedRecipes.map((recipe) => (
             <SavedRecipeTile recipe={recipe} key={recipe._id} />
