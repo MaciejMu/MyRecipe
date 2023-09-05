@@ -5,7 +5,7 @@ import QuickRecipeTile from "../components/QuickRecipeTile/QuickRecipeTile";
 import Container from "../components/Container/Container";
 import { RecipeProps } from "../types";
 
-const QuickAndFastRecipes = () => {
+const FastAndQuickRecipes = () => {
   const [recipes, setRecipes] = useState<RecipeProps[]>([]);
 
   useEffect(() => {
@@ -44,4 +44,4 @@ const QuickAndFastRecipes = () => {
   );
 };
 
-export default QuickAndFastRecipes;
+export default FastAndQuickRecipes;

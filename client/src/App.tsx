@@ -2,15 +2,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Navbar from "./components/Header/Header";
 import PrivateRoutes from "./utilis/PrivateRoutes";
-import Login from "./pages/Login";
-import SingleRecipe from "./pages/Single-recipe";
 import { useEffect } from "react";
-import Register from "./pages/Register";
-import Home from "./pages/Home";
-import FastAndQuickRecipes from "./pages/Quick&FastRecipes";
 import Footer from "./components/Footer/Footer";
-import CreateRecipe from "./pages/Create-recipe";
-import SavedRecipes from "./pages/Saved-recipes";
+import FastAndQuickRecipes from "./pages/quick&fastRecipes";
+import CreateRecipe from "./pages/create-recipe";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import SavedRecipes from "./pages/saved-recipes";
+import SingleRecipe from "./pages/single-recipe";
 
 const App = () => {
   useEffect(() => {
