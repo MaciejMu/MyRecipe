@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { RecipeProps } from "../../pages/Home";
 import style from "./QuickRecipeTile.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,6 +9,7 @@ import {
 import { useState } from "react";
 import clsx from "clsx";
 import CustomImage from "../CustomImage/CustomImage";
+import { RecipeProps } from "../../types";
 
 const QuickRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   const [isActive, setIsActive] = useState(false);

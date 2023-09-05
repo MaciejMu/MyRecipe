@@ -25,12 +25,16 @@ const LimitControlers = ({
     <section className={style.section}>
       {showLess > 4 && page === 1 ? (
         <Link to={createLink(showLess)}>
-          <ChevronsButton arrowsUp>Show less</ChevronsButton>
+          <ChevronsButton arrowsUp type={"button"}>
+            Show less
+          </ChevronsButton>
         </Link>
       ) : null}
       {limit < numOfRecipes && page === 1 ? (
         <Link to={createLink(showMore)}>
-          <ChevronsButton arrowsDown>Show more</ChevronsButton>
+          <ChevronsButton arrowsDown type={"button"}>
+            Show more
+          </ChevronsButton>
         </Link>
       ) : null}
     </section>

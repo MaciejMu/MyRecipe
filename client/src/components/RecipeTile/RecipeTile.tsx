@@ -3,9 +3,9 @@ import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { RecipeProps } from "../../pages/Home";
 import style from "./RecipeTile.module.scss";
 import CustomImage from "../CustomImage/CustomImage";
+import { RecipeProps } from "../../types";
 
 const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   const [isHover, setIsHover] = useState(false);

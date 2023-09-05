@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { RecipeProps } from "./Home";
 import TitleBanner from "../components/TitleBanner/TitleBanner";
 import QuickRecipeTile from "../components/QuickRecipeTile/QuickRecipeTile";
 import Container from "../components/Container/Container";
+import { RecipeProps } from "../types";
 
 const QuickAndFastRecipes = () => {
   const [recipes, setRecipes] = useState<RecipeProps[]>([]);

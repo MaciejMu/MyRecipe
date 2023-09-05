@@ -4,7 +4,7 @@ import RecipeTile from "../RecipeTile/RecipeTile";
 import { useSearchParams } from "react-router-dom";
 import PaginationContainer from "../PaginationContainer/PaginationContainer";
 import CategoryFilter from "../CategoryFilter/CategoryFilter";
-import { RecipeProps } from "../../pages/Home";
+import { RecipeProps } from "../../types";
 import style from "./RecipesTilesGrid.module.scss";
 
 const RecipesTilesGrid = () => {
