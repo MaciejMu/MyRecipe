@@ -82,16 +82,18 @@
       }
     }
   }
-
   @media print {
     padding: 0px 0 50px 0;
     gap: 10px;
 
-    img,
-    p,
     button {
       display: none;
     }
+
+    li {
+      break-inside: avoid;
+    }
+
     ul {
       gap: 10px;
     }

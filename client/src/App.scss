@@ -95,3 +95,14 @@ hr {
   border: 1px solid orange;
   margin: 20px 0 0;
 }
+
+@media print {
+  img,
+  p,
+  b,
+  button,
+  header,
+  footer {
+    display: none;
+  }
+}

@@ -26,7 +26,7 @@ const NewsletterBanner = () => {
 
   return (
     <section className={style.section}>
-      <img src={"src/assets/newsletter-background.webp"} />
+      <img src={"/src/assets/newsletter-background.webp"} />
       {!isSend ? (
         <div>
           <h4>

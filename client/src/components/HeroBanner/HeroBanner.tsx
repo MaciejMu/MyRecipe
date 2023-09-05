@@ -15,7 +15,7 @@ const HeroBanner = ({
   return (
     <Link to={linkTo}>
       <section className={style.section}>
-        <img src={img}></img>
+        <img src={img} loading="eager"></img>
         <span>
           <h4>{title}</h4>
           <p>{description}</p>

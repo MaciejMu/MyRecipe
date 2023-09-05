@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Navbar from "./components/Header/Header";
 import PrivateRoutes from "./utilis/PrivateRoutes";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Footer from "./components/Footer/Footer";
 import FastAndQuickRecipes from "./pages/Quick&FastRecipes";
 import CreateRecipe from "./pages/Create-recipe";
@@ -11,14 +10,17 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SavedRecipes from "./pages/Saved-recipes";
 import SingleRecipe from "./pages/Single-recipe";
+import Header from "./components/Header/Header";
 
 const App = () => {
   useEffect(() => {
     document.title = "MyRecipe";
   }, []);
+  const memoizedHeader = useMemo(() => <Header />, []);
+
   return (
     <BrowserRouter>
-      <Navbar />
+      {memoizedHeader}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route element={<PrivateRoutes />}>

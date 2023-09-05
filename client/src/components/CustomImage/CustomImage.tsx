@@ -21,6 +21,7 @@ const CustomImage = ({
       }
       className={className}
       alt={alt}
+      loading="lazy"
     ></img>
   );
 };
