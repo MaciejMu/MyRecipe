@@ -6,18 +6,18 @@ import createAppError from "./appError";
 dotenv.config({ path: "./.env" });
 const JWTSecret = process.env.JWT_SECRET || "";
 
-export const verifyToken = (
+export const verifyToken = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   const token = req.headers.authorization;
-  if (token) {
-    jwt.verify(token, JWTSecret, (err: unknown) => {
-      if (err) return res.sendStatus(403);
-    });
-  } else {
-    return next(createAppError("You are not logged in!", 401));
+
+  if (!token) {
+    return next(
+      createAppError("You are not logged in! Please log in to get access.", 401)
+    );
   }
+  jwt.verify(token, JWTSecret) as { id: string };
   next();
 };

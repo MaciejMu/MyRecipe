@@ -59,7 +59,7 @@ const RecipeSchema = new mongoose.Schema({
         "Drinks",
         "Desserts",
       ],
-      message: "Wrong category",
+      message: "{VALUE} is wrong category",
     },
   },
   createdAt: {

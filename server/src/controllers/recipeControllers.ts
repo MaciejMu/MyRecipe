@@ -138,3 +138,17 @@ export const getQuickandFast = catchAsync(
     res.status(201).json(response);
   }
 );
+
+export const deleteRecipe = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const recipe = await RecipeModel.findByIdAndDelete(req.params.id);
+
+    if (!recipe) {
+      return next(createAppError("No tour found with that ID", 404));
+    }
+
+    res.status(204).json({
+      status: "success",
+    });
+  }
+);
