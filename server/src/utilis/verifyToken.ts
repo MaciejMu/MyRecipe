@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import createAppError from "./appError";
 
 dotenv.config({ path: "./.env" });
 const JWTSecret = process.env.JWT_SECRET || "";
@@ -14,9 +15,9 @@ export const verifyToken = (
   if (token) {
     jwt.verify(token, JWTSecret, (err: unknown) => {
       if (err) return res.sendStatus(403);
-      next();
     });
   } else {
-    res.sendStatus(401);
+    return next(createAppError("You are not logged in!", 401));
   }
+  next();
 };

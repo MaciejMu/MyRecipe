@@ -17,9 +17,6 @@ export const register = async (req: Request, res: Response) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // const newUser = new UserModel({ username, password: hashedPassword });
-  // await newUser.save();
-
   UserModel.create({ username: req.body.username, password: hashedPassword });
 
   res.json({ message: "User created sucessfully!" });
@@ -39,9 +36,7 @@ export const login = async (req: Request, res: Response) => {
   if (!isPasswordCorrect) {
     return res.status(404).json({ message: "Password is incorect" });
   } else if (user) {
-    const token = jwt.sign({ id: user._id }, JWTSecret, {
-      expiresIn: process.env.JWT_EXPIRES,
-    });
+    const token = jwt.sign({ id: user._id }, JWTSecret);
     res.json({ token, userID: user._id });
   }
 };

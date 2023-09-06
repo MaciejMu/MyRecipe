@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import style from "./NewsletterBanner.module.scss";
 import { BeatLoader } from "react-spinners";
+import newsletterImg from "../../assets/newsletter-background.webp";
 
 const NewsletterBanner = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +27,7 @@ const NewsletterBanner = () => {
 
   return (
     <section className={style.section}>
-      <img src={"/src/assets/newsletter-background.webp"} />
+      <img src={newsletterImg} />
       {!isSend ? (
         <div>
           <h4>
