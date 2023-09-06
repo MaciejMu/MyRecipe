@@ -16,6 +16,11 @@ const UserSchema = new mongoose.Schema({
       ref: "Recipe",
     },
   ],
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
 });
 
 export const UserModel = mongoose.model("user", UserSchema);

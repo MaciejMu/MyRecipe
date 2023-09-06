@@ -11,7 +11,9 @@ import {
   subtractLikesCounter,
   unsaveRecipe,
   getQuickandFast,
+  deleteRecipe,
 } from "../controllers/recipeControllers";
+import { restrictTo } from "../controllers/authController";
 
 const router = express.Router();
 
@@ -25,6 +27,7 @@ router
   .patch("/counter-subtract", verifyToken, subtractLikesCounter)
   .get("/saved-recipes/:userID", getSavedRecipes)
   .get("/saved-recipes/ids/:userID", getIdOfSavedRecipes)
-  .get("/Quick-&-Fast", getQuickandFast);
+  .get("/Quick-&-Fast", getQuickandFast)
+  .delete("/:id", verifyToken, restrictTo("admin"), deleteRecipe);
 
 export { router as recipesRouter };
