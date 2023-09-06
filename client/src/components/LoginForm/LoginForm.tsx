@@ -43,12 +43,15 @@ const Login = () => {
         navigate("/");
       }, 1500);
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof AxiosError && error.response?.data.message) {
         setModalText(error.response?.data.message);
         openModal();
+      } else {
+        setModalText("Something went wrong");
+        openModal();
       }
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   return (

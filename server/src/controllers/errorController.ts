@@ -25,7 +25,7 @@ const errorHandlerController = (
   next: NextFunction
 ) => {
   let error = { ...err };
-  console.log(error);
+
   if (error.name === "CastError") error = handleCastError(error);
   if (error.code === 11000) error = handleDuplicate(error);
   if (error.name === "ValidationError") error = handleValidationError(error);

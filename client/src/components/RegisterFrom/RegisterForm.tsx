@@ -9,6 +9,7 @@ import Modal from "../Modal/Modal";
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [modalText, setModalText] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +31,7 @@ const RegisterForm = () => {
       await axios.post("http://localhost:3001/user/register", {
         username,
         password,
+        confirmPassword,
       });
       setModalText(
         "Registration Completed! You will be redirected to the login page."
@@ -44,7 +46,6 @@ const RegisterForm = () => {
         openModal();
       }
     }
-
     setIsLoading(false);
   };
 
@@ -77,6 +78,16 @@ const RegisterForm = () => {
               id="password"
               value={password.trim()}
               onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword">Confirm password:</label>
+            <input
+              required
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword.trim()}
+              onChange={(event) => setConfirmPassword(event.target.value)}
             />
           </div>
           {isLoading ? (
