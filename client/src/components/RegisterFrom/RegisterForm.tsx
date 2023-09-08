@@ -65,6 +65,7 @@ const RegisterForm = () => {
               required
               type="text"
               id="username"
+              minLength={4}
               maxLength={10}
               value={username.trim()}
               onChange={(event) => setUsername(event.target.value)}
@@ -87,6 +88,7 @@ const RegisterForm = () => {
               type="password"
               id="confirmPassword"
               value={confirmPassword.trim()}
+              minLength={4}
               onChange={(event) => setConfirmPassword(event.target.value)}
             />
           </div>
