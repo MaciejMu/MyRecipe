@@ -6,7 +6,7 @@ import { faPrint } from "@fortawesome/free-solid-svg-icons";
 import SaveRecipeButton from "../SaveRecipeButton/SaveRecipeButton";
 import style from "./SingleRecipeTile.module.scss";
 import CustomImage from "../CustomImage/CustomImage";
-import { RecipeProps } from "../../types";
+import { RecipeProps } from "../../types/Recipe";
 import { ClipLoader } from "react-spinners";
 
 const SingleRecipeTile = () => {

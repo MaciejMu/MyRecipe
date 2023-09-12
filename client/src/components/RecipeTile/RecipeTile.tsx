@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import style from "./RecipeTile.module.scss";
 import CustomImage from "../CustomImage/CustomImage";
-import { RecipeProps } from "../../types";
+import { RecipeProps } from "../../types/Recipe";
 
 const RecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   const [isHover, setIsHover] = useState(false);

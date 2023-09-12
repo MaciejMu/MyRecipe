@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import style from "./SavedRecipeTile.module.scss";
 import CustomImage from "../CustomImage/CustomImage";
-import { RecipeProps } from "../../types";
+import { RecipeProps } from "../../types/Recipe";
 
 const SavedRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   return (

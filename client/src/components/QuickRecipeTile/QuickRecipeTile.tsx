@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import clsx from "clsx";
 import CustomImage from "../CustomImage/CustomImage";
-import { RecipeProps } from "../../types";
+import { RecipeProps } from "../../types/Recipe";
 
 const QuickRecipeTile = ({ recipe }: { recipe: RecipeProps }) => {
   const [isActive, setIsActive] = useState(false);
