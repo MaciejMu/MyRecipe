@@ -34,7 +34,7 @@ const FastAndQuickRecipes = () => {
       <Container>
         <ul>
           {recipes.map((recipe, i) => (
-            <li key={i}>
+            <li key={i} data-aos="fade-left">
               <QuickRecipeTile recipe={recipe} />
             </li>
           ))}

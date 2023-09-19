@@ -4,13 +4,13 @@ import PrivateRoutes from "./utilis/PrivateRoutes";
 import { useEffect, useMemo } from "react";
 import Footer from "./components/Footer/Footer";
 import FastAndQuickRecipes from "./pages/Quick&FastRecipes";
-import CreateRecipe from "./pages/Create-recipe";
-import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import SavedRecipes from "./pages/Saved-recipes";
 import SingleRecipe from "./pages/Single-recipe";
 import Header from "./components/Header/Header";
+import CreateRecipe from "./pages/Create-recipe";
+import Home from "./pages/Home";
+import SavedRecipes from "./pages/Saved-recipes";
 
 const App = () => {
   useEffect(() => {

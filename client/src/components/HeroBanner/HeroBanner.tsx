@@ -16,7 +16,7 @@ const HeroBanner = ({
     <Link to={linkTo}>
       <section className={style.section}>
         <img src={img} loading="eager"></img>
-        <span>
+        <span data-aos="fade-right" data-aos-delay="200">
           <h4>{title}</h4>
           <p>{description}</p>
         </span>

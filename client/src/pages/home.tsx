@@ -3,10 +3,20 @@ import Container from "../components/Container/Container";
 import RecipesTilesGrid from "../components/RecipesTilesGrid/RecipesTilesGrid";
 import HeroBanner from "../components/HeroBanner/HeroBanner";
 import NewsletterBanner from "../components/NewsletterBanner/NewsletterBanner";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
   useEffect(() => {
     document.title = "MyRecipe";
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 500,
+      mirror: false,
+    });
   }, []);
 
   return (

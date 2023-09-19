@@ -5,6 +5,8 @@ import Container from "../components/Container/Container";
 import SavedRecipeTile from "../components/SavedRecipeTile/SavedRecipeTile";
 import { RecipeProps } from "../types/Recipe";
 import { ClipLoader } from "react-spinners";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SavedRecipes = () => {
   const userID = getUserID();
@@ -14,6 +16,13 @@ const SavedRecipes = () => {
 
   useEffect(() => {
     document.title = "MyRecipe - Saved Recipes";
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 600,
+      mirror: false,
+    });
   }, []);
 
   useEffect(() => {
@@ -37,7 +46,7 @@ const SavedRecipes = () => {
       {isLoading ? (
         <ClipLoader color="orange" />
       ) : savedRecipes.length > 0 ? (
-        <ul>
+        <ul data-aos="fade-up">
           {savedRecipes.map((recipe) => (
             <SavedRecipeTile recipe={recipe} key={recipe._id} />
           ))}

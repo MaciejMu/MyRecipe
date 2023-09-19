@@ -36,7 +36,7 @@ const RecipesTilesGrid = () => {
   return (
     <>
       <CategoryFilter />
-      <ul className={style.container}>
+      <ul data-aos="fade-up" className={style.container}>
         {recipes.map((recipe) => (
           <li key={recipe._id}>
             <RecipeTile recipe={recipe} />
