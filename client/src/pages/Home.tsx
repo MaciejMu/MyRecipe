@@ -32,7 +32,6 @@ const Home = () => {
         linkTo={"/Quick-&-Fast"}
       />
       <Container>
-        <h1>Newest Recipes</h1>
         <RecipesTilesGrid />
       </Container>
       <NewsletterBanner />

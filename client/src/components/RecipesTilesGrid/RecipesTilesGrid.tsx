@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import RecipeTile from "../RecipeTile/RecipeTile";
 import { useSearchParams } from "react-router-dom";
 import PaginationContainer from "../PaginationContainer/PaginationContainer";
@@ -13,6 +13,8 @@ const RecipesTilesGrid = () => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [searchParams, _] = useSearchParams();
+
+  const h1Ref = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -35,6 +37,7 @@ const RecipesTilesGrid = () => {
 
   return (
     <>
+      <h1 ref={h1Ref}>Newest Recipes</h1>
       <CategoryFilter />
       <ul data-aos="fade-up" className={style.container}>
         {recipes.map((recipe) => (
@@ -43,7 +46,7 @@ const RecipesTilesGrid = () => {
           </li>
         ))}
       </ul>
-      <PaginationContainer numOfRecipes={numOfRecipes} />
+      <PaginationContainer numOfRecipes={numOfRecipes} h1Ref={h1Ref} />
     </>
   );
 };

@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 import CreateRecipe from "./pages/Create-recipe";
 import Home from "./pages/Home";
 import SavedRecipes from "./pages/Saved-recipes";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 const App = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {memoizedHeader}
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route element={<PrivateRoutes />}>
