@@ -27,7 +27,7 @@ https://github.com/MaciejMu/MyRecipe/assets/116006124/10f9ef63-acac-4e3e-81fd-6f
 
 ### Loginwith validation
 
-https://github.com/MaciejMu/MyRecipe/assets/116006124/6199070d-3100-47e1-a199-0c93481f34fd
+![Zrzut ekranu 2023-11-17 o 18 11 06](https://github.com/MaciejMu/MyRecipe/assets/116006124/6199070d-3100-47e1-a199-0c93481f34fd)
 
 ### Saved recipes
 
