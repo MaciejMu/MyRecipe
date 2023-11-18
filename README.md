@@ -1,13 +1,13 @@
 # Welcome to MyRecipe! 👋
 
-## Technologies
+## Used technologies
 
 * React
 * MongooDB
 * Node.js
 * Express
 
-## Site
+## Site elements
 
 ### Landing page
 
