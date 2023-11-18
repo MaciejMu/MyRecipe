@@ -58,14 +58,12 @@ pnpm i
 
 then you need to run server:
 ```
-server
 cd/server
 pnpm run start
 ```
 
 and client:
 ```
-client
 cd/client
 pnpm run dev
 ```
